@@ -194,7 +194,7 @@ Build and return all the `react-router/Route` components
 
 #### `.describe()`
 
-Generate easily accessible description of all named paths
+Generate easily accessible directions to all named paths
 
 ```js
 const paths = route.describe();
