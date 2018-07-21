@@ -41,9 +41,9 @@ const route = chart.route({
   }
 });
 
-console.log(route.name); // "base"
-console.log(route.props); // { strict: true }
-console.log(route.directions.base); // "/"
+route.name;              // "base"
+route.props;             // { strict: true }
+route.directions.base;   // "/"
 
 route.render();
 // generates
@@ -201,9 +201,9 @@ const paths = route.describe();
 ```
 
 ```js
-log(paths.base.$); // "/base"
-log(paths.base.demo.$); // "/base/demo/:id"
-log(paths.base.example.$); // "/base/example/:id"
-log(paths.base.demo.aChild.$); // "/base/demo/:id/iam/a/child"
-log(paths.base.example.aChild.$); // "/base/example/:id/iam/a/child"
+paths.base.$;                  // "/base"
+paths.base.demo.$;             // "/base/demo/:id"
+paths.base.example.$;          // "/base/example/:id"
+paths.base.demo.aChild.$;      // "/base/demo/:id/iam/a/child"
+paths.base.example.aChild.$;   // "/base/example/:id/iam/a/child"
 ```
