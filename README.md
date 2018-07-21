@@ -1,15 +1,17 @@
 # React Router Cartographer
 
-Easily create single source map of truth for all routes in your react app
+Create a single source map of truth for all routes in your react app and easily render in react-router
 
-## Shape
+## Shapes
+
+### `Route`
 
 ```js
-Route {
+{
     name: string,
     props: {},
     renderProps: {},
-    suffixes: { name: path },
+    suffixes: [{ name: path }],
     nest: {
         props: {},
         renderProps: {},
@@ -20,15 +22,15 @@ Route {
 
 ## API
 
-### Chart
-
-#### Import
+### Start Chart
 
 ```js
-import { chart } from "react-cartographer";
+import chart from "react-cartographer";
 ```
 
-Simple usage
+#### .route(shape)
+
+Create a route object with the specified shape (see shape above)
 
 ```js
 const route = chart.route({
@@ -39,130 +41,119 @@ const route = chart.route({
   }
 });
 
-console.log(route.name); // 'base'
+console.log(route.name); // "base"
 console.log(route.props); // { strict: true }
-console.log(route.directions.base); // '/'
+console.log(route.directions.base); // "/"
 
-chart.render(route);
+route.render();
 // generates
 <Route path="/" component={App} strict />;
 ```
 
-#### Methods
+### Build Routes
 
-##### .route(shape)
+These methods on the `route` return a reference to the updated object for easier mapping
 
-Create a route object with the specified shape (see shape above)
+#### `.setName(string) => route.name`
 
-##### .render(route)
+This is the value used for describing directions, therefore must be unique in the context of its parent route
 
-Renders a Route object as `react-router/Route` components
-
-Alternatively use `route.render()` which call this function on itself
-
----
-
-#### `Route`
-
-These methods return a reference to route object for easier mapping
-
-##### `.setName(string) => route.name`
-
-This is the value used for describing directions, therefore must be unique in the context of it's parent route
-
-##### `.setProps({}) => route.props`
+#### `.setProps({}) => route.props`
 
 Accepts all `react-router/Route` props, using `path` as the `base` for suffixes
 
-##### `.rPath(string) => route.props.path`
+#### `.rPath(string) => route.props.path`
 
-##### `.rkey(string) => route.props.key`
+#### `.rkey(string) => route.props.key`
 
-##### `.rExact(boolean) => route.props.exact`
+#### `.rExact(boolean) => route.props.exact`
 
-##### `.rStrict(boolean) => route.props.strict`
+#### `.rStrict(boolean) => route.props.strict`
 
-##### `.rLocation({ pathname: string }) => route.props.location`
+#### `.rLocation({ pathname }) => route.props.location`
 
-##### `.rSensitive(boolean) => route.props.sensitive`
+#### `.rSensitive(boolean) => route.props.sensitive`
 
-##### `.rChildren(function() {}) => route.props.children`
+#### `.rChildren(() => {}) => route.props.children`
 
-##### `.rComponent(ReactComponent) => route.props.component`
+#### `.rComponent(ReactComponent) => route.props.component`
 
-##### `.rRender(function() {}) => route.props.render`
+#### `.rRender(() => {}) => route.props.render`
 
-> see [`react-router`](https://reacttraining.com/react-router/web/api/Route/component) for more description of above properties
+> see [`react-router`](https://reacttraining.com/react-router/web/api/Route/component) for more description of the above properties
 
-##### `.setRenderProps() => route.renderProps`
+#### `.setRenderProps() => route.renderProps`
 
 Extra properties passed to the render of this route. When this is non empty react router render property is always used
 
-##### `.setSuffixes({}) => route.suffixes`
+#### `.setSuffixes() => route.suffixes`
 
-List of paths appended to base, result used as `react-router/Route.path` prop
+List of paths appended to base, result used as `Route.path` prop
 
-##### `.addSuffixes(...suffixes)`
+#### `.addSuffixes(...suffixes)`
 
 Add one or more suffixes to existing `route.suffixes`
 
-##### `.removeSuffixes(...names)`
+#### `.removeSuffixes(...names)`
 
 Deletes specified suffixes using names as keys
 
-##### `.setNestedProps() => route.nest.props`
+#### `.setNestedProps() => route.nest.props`
 
 Optional base props passed to all children routes
 
-##### `.setNestedRenderProps() => route.nest.renderProps`
+#### `.setNestedRenderProps() => route.nest.renderProps`
 
 Optional extra properties passed to the render of all children routes
 
-##### `.setNestedRoutes(...route) => route.nest.routes`
+#### `.setNestedRoutes(...route) => route.nest.routes`
 
-List of children routes, generates `react-router/Route` for each base * suffixes
+List of children routes, generates `react-router/Route` for each base \* suffixes
 
-##### `.addRoutes(...route)`
+#### `.addRoutes(...route)`
 
 Add single or multiple routes to the exisiting list
 
-##### `.removeRoutes(...names)`
+#### `.removeRoutes(...names)`
 
 Remove from list of routes only works if nested routes were named
 
-##### `.removeRoute(name: string, ...{ verify: boolean })`
+#### `.removeRoute(name, verify=false)`
 
-Use verify to return result of operation instead of updated route object
+Pass `true` to verify param to get result of operation instead of updated route object
 
----
+### Render Map
 
 Next we have the methods that generate the routes
 
 ```js
-const childRoute = chart.route({
-    props: { path: '/iam', component: ChildView, key: 'a-child-view' },
-    suffixes: [{'aChild': '/a/child'}],
-}).setRenderProps({ level: 2 })
+const childRoute = chart
+  .route({
+    props: { path: "/iam", component: ChildView, key: "a-child-view" },
+    suffixes: [{ aChild: "/a/child" }]
+  })
+  .setRenderProps({ level: 2 });
 
-const parentRoute = chart.route({
+const parentRoute = chart
+  .route({
     props: { exact: true, strict: true, component: BaseView },
-    suffixes: [{ example: '/example/\\d+'}, { demo: '/demo/\\d+'}],
-    renderProps: { highlight : true },
-})
-.addRoutes(childRoute)
-.setNestedProps({ exact: true, strict: true })
-.setNestedRenderProps({ highlight: true, level: 1 })
+    suffixes: [{ example: "/example/:id" }, { demo: "/demo/:id" }],
+    renderProps: { highlight: true }
+  })
+  .addRoutes(childRoute)
+  .setNestedProps({ exact: true, strict: true })
+  .setNestedRenderProps({ highlight: true, level: 1 });
 
 const baseRoute = {
-    name: 'base',
-    props: { path: '/mybase' },
-    routes: [parentRoute],
-}
+  name: "base",
+  props: { path: "/mybase" },
+  routes: [parentRoute]
+};
 ```
 
-##### `.render()`
+#### `.render()`
 
-Map and render all the `react-route/Route` components
+Build and return all the `react-router/Route` components
 
 ```ml
 <Switch>{ baseRoute.render() }</Switch>
@@ -171,26 +162,28 @@ Map and render all the `react-route/Route` components
 ```ml
 <Switch>
     <Route
-        path="/mybase/example/\\d+"
+        path="/mybase/example/:id"
+        key="/mybase/example/:id"
         exact
         strict
         render={ props => <BaseView highlight=true /> }
     />
     <Route
-        path="/mybase/demo/\\d+/"
+        path="/mybase/demo/:id"
+        key="/mybase/demo/:id"
         exact
         strict
         render={ props => <BaseView highlight=true /> }
     />
     <Route
-        path="/mybase/example/\\d+/iam/a/child"
+        path="/mybase/example/:id/iam/a/child"
         key="a-child-view.0"
         exact
         strict
         render={ props => <ChildView highlight=true level=2 /> }
     />
     <Route
-        path="/mybase/demo/\\d+/iam/a/child"
+        path="/mybase/demo/:id/iam/a/child"
         key="a-child-view.1"
         exact
         strict
@@ -199,10 +192,18 @@ Map and render all the `react-route/Route` components
 </Switch>
 ```
 
-##### `.describe()`
+#### `.describe()`
 
-Generate easily accessible description of all named routes
+Generate easily accessible description of all named paths
 
 ```js
+const paths = route.describe();
+```
 
+```js
+log(paths.base.$); // "/base"
+log(paths.base.demo.$); // "/base/demo/:id"
+log(paths.base.example.$); // "/base/example/:id"
+log(paths.base.demo.aChild.$); // "/base/demo/:id/iam/a/child"
+log(paths.base.example.aChild.$); // "/base/example/:id/iam/a/child"
 ```
