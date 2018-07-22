@@ -11,7 +11,7 @@ Create a single source map of truth for all routes in your react app and easily 
     name: string,
     props: {},
     renderProps: {},
-    suffixes: [{ name: path }],
+    suffixes: { name: path },
     nest: {
         props: {},
         renderProps: {},
@@ -36,14 +36,15 @@ Create a route object with the specified shape (see shape above)
 const route = chart.route({
   name: "base",
   props: {
+    path: "/",
     component: App,
     strict: true
   }
 });
 
 route.name;              // "base"
-route.props;             // { strict: true }
-route.directions.base;   // "/"
+route.props;             // { path: "/", strict: true }
+route.describe().base.$;   // ""
 
 route.render();
 // generates
@@ -88,7 +89,7 @@ Extra properties passed to the render of this route. When this is non empty reac
 
 #### `.setSuffixes() => route.suffixes`
 
-List of paths appended to base, result used as `Route.path` prop
+Named paths appended to base, result used as `Route.path` prop
 
 #### `.addSuffixes(...suffixes)`
 
@@ -130,14 +131,14 @@ Next we have the methods that generate the routes
 const childRoute = chart
   .route({
     props: { path: "/iam", component: ChildView, key: "a-child-view" },
-    suffixes: [{ aChild: "/a/child" }]
+    suffixes: { aChild: "/a/child" }
   })
   .setRenderProps({ level: 2 });
 
 const parentRoute = chart
   .route({
     props: { exact: true, strict: true, component: BaseView },
-    suffixes: [{ example: "/example/:id" }, { demo: "/demo/:id" }],
+    suffixes: { example: "/example/:id", demo: "/demo/:id" },
     renderProps: { highlight: true }
   })
   .addRoutes(childRoute)

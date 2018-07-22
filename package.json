@@ -45,6 +45,10 @@
     "node": ">=10.4.0",
     "npm": ">=6.1.0"
   },
+  "dependencies": {
+    "react": "^16.4.1",
+    "react-router": "^4.3.1"
+  },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.2.6",
