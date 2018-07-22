@@ -1,0 +1,58 @@
+{
+  "name": "react-cartographer",
+  "version": "0.0.1",
+  "description": "Static route mapping for React Router",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint",
+      "jest --bail --findRelatedTests"
+    ]
+  },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "./artifacts/",
+      "./node_modules/"
+    ],
+    "coverageDirectory": "./artifacts/coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iamogbz/react-cartographer.git"
+  },
+  "keywords": [
+    "react",
+    "router",
+    "react-router",
+    "javascript",
+    "es6",
+    "nodejs",
+    "chart",
+    "graph",
+    "cartographer"
+  ],
+  "author": "iamogbz",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/iamogbz/react-cartographer/issues"
+  },
+  "homepage": "https://github.com/iamogbz/react-cartographer#readme",
+  "devDependencies": {
+    "babel-eslint": "^8.2.6",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-prettier": "^2.6.2",
+    "eslint-plugin-react": "^7.10.0",
+    "jest": "^23.4.1",
+    "lint-staged": "^7.2.0",
+    "prettier": "^1.13.7",
+    "rxjs": "^6.2.2"
+  }
+}
