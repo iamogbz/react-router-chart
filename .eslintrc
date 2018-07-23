@@ -24,6 +24,7 @@
         "no-use-before-define": [2, { "functions": false }],
         "no-underscore-dangle": [2, { "allowAfterThis": true }],
         "import/prefer-default-export": 0,
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
         "react/jsx-first-prop-new-line": [2, "multiline"],
         "react/jsx-indent": [2, 4],
         "react/jsx-indent-props": [2, 4],
