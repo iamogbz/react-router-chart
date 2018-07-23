@@ -196,7 +196,7 @@ export default class {
     };
 
     /**
-     * Build react router route components
+     * Build and return all the react-router/Route components
      */
     render = (base = "") => {
         const routes = this._flatten(this, base);
@@ -218,4 +218,36 @@ export default class {
             return <Route {...rProps} key={rProps.key || rProps.path} />;
         });
     };
+
+    _describe = (route, base) => {
+        const directions = { $: base };
+        const basePath = `${base}${route.props.path || ""}`;
+        const namedSuffixes = Object.keys(route.suffixes);
+        if (namedSuffixes.length)
+            namedSuffixes.forEach(name => {
+                const path = `${basePath}${route.suffixes[name]}`;
+                const nextRoute = Object.assign({}, route, {
+                    name,
+                    suffixes: {},
+                });
+                Object.assign(directions, {
+                    [name]: this._describe(nextRoute, path),
+                });
+            });
+        else {
+            route.nest.routes.forEach(nestedRoute => {
+                const nested = this._describe(nestedRoute, basePath);
+                Object.assign(
+                    directions,
+                    nestedRoute.name ? { [nestedRoute.name]: nested } : nested,
+                );
+            });
+        }
+        return directions;
+    };
+
+    /**
+     * Generate easily accessible directions to all named paths
+     */
+    describe = (base = "") => this._describe(this, base);
 }
