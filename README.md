@@ -107,21 +107,17 @@ Optional base props passed to all children routes
 
 Optional extra properties passed to the render of all children routes
 
-#### `.setNestedRoutes(...route) => route.nest.routes`
+#### `.setNestedRoutes() => route.nest.routes`
 
 List of children routes, generates `react-router/Route` for each base \* suffixes
 
-#### `.addRoutes(...route)`
+#### `.addNestedRoutes(...routes)`
 
-Add single or multiple routes to the exisiting list
+Add single or multiple routes to the existing list of nested routes
 
-#### `.removeRoutes(...names)`
+#### `.removeNestedRoutes(...names)`
 
 Remove from list of routes only works if nested routes were named
-
-#### `.removeRoute(name, verify=false)`
-
-Pass `true` to verify param to get result of operation instead of updated route object
 
 ### Render Map
 
@@ -141,15 +137,15 @@ const parentRoute = chart
     suffixes: { example: "/example/:id", demo: "/demo/:id" },
     renderProps: { highlight: true }
   })
-  .addRoutes(childRoute)
+  .addNestedRoutes(childRoute)
   .setNestedProps({ exact: true, strict: true })
   .setNestedRenderProps({ highlight: true, level: 1 });
 
-const baseRoute = {
+const baseRoute = chart.route({
   name: "base",
   props: { path: "/mybase" },
-  routes: [parentRoute]
-};
+  nest: { routes: [parentRoute] },
+});
 ```
 
 #### `.render()`
