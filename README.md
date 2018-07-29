@@ -28,7 +28,7 @@ Create a single source map of truth for all routes in your react app and easily 
 import chart from "react-cartographer";
 ```
 
-#### .route(shape)
+#### `.route(shape)`
 
 Create a route object with the specified shape (see shape above)
 
