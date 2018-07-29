@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Route should describe routes correctly 1`] = `
+Object {
+  "$": "",
+  "son": Object {
+    "$": "/child/son",
+  },
+  "twin": Object {
+    "$": "/twin",
+    "first": Object {
+      "$": "/twin-one",
+    },
+    "second": Object {
+      "$": "/twin-two",
+    },
+  },
+}
+`;
+
+exports[`Route should render routes correctly 1`] = `
+Array [
+  <Route
+    exact={true}
+    path="/twin-one"
+    render={[Function]}
+  />,
+  <Route
+    exact={true}
+    path="/twin-two"
+    render={[Function]}
+  />,
+  <Route
+    exact={true}
+    path="/child/son"
+    render={[MockFunction]}
+  />,
+]
+`;

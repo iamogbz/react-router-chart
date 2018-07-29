@@ -1,7 +1,7 @@
 import React from "react";
-import Route from "react-router/Route";
+import ReactRoute from "react-router/Route";
 
-export default class {
+export default class Route {
     constructor({ name, props, renderProps, suffixes, nest } = {}) {
         this.name = name ? name.toString() : undefined;
         this.props = Object.assign({}, props);
@@ -11,7 +11,7 @@ export default class {
             ? {
                   props: Object.assign({}, nest.props),
                   renderProps: Object.assign({}, nest.renderProps),
-                  routes: [...(nest.routes || [])],
+                  routes: (nest.routes || []).map(shape => new Route(shape)),
               }
             : { props: {}, renderProps: {}, routes: [] };
     }
@@ -38,38 +38,42 @@ export default class {
      * @param {string} name
      * @returns {} reference to updated object
      */
-    setName = name => {
-        this.name = name;
-        return this;
-    };
+    setName = name => Object.assign(this, { name });
 
     /**
      * Sets react router route props
      * @param {} props
      * @returns {} reference to updated object
      */
-    setProps = props => {
+    setProps = props => Object.assign(this, { props });
+
+    /**
+     * Adds to react router route props
+     * @param {} props
+     * @returns {} reference to updated object
+     */
+    addProps = props => {
         Object.assign(this.props, props);
         return this;
     };
 
-    rPath = path => this.setProps({ path });
+    rPath = path => this.addProps({ path });
 
-    rKey = key => this.setProps({ key });
+    rKey = key => this.addProps({ key });
 
-    rExact = exact => this.setProps({ exact });
+    rExact = exact => this.addProps({ exact });
 
-    rStrict = strict => this.setProps({ strict });
+    rStrict = strict => this.addProps({ strict });
 
-    rLocation = location => this.setProps({ location });
+    rLocation = location => this.addProps({ location });
 
-    rSensitive = sensitive => this.setProps({ sensitive });
+    rSensitive = sensitive => this.addProps({ sensitive });
 
-    rChildren = children => this.setProps({ children });
+    rChildren = children => this.addProps({ children });
 
-    rComponent = component => this.setProps({ component });
+    rComponent = component => this.addProps({ component });
 
-    rRender = render => this.setProps({ render });
+    rRender = render => this.addProps({ render });
 
     /**
      * Extra properties passed to the render of this route.
@@ -85,7 +89,7 @@ export default class {
     /**
      * Add one or more suffixes to existing route.suffixes
      */
-    addSuffixes = (...suffixes) =>
+    addSuffixes = suffixes =>
         Object.assign(this, {
             suffixes: Object.assign(this.suffixes, suffixes),
         });
@@ -145,7 +149,7 @@ export default class {
             }),
         });
 
-    _canRender = ({ path, children, component, render } = {}) =>
+    _canRender = ({ path, children, component, render }) =>
         path && (children || component || render);
 
     _trim = ({ name, props, renderProps }) => ({
@@ -166,7 +170,7 @@ export default class {
             routes: nestedRoutes,
         } = route.nest;
         paths.forEach(path => {
-            const fullPath = `${base}${path}`;
+            const fullPath = `${base}${path || ""}`;
             const props = Object.assign({}, route.props, { path });
             if (this._canRender(props)) {
                 props.path = fullPath;
@@ -215,13 +219,13 @@ export default class {
                 delete rProps.component;
                 delete rProps.children;
             }
-            return <Route {...rProps} key={rProps.key || rProps.path} />;
+            return <ReactRoute {...rProps} key={rProps.key || rProps.path} />;
         });
     };
 
     _describe = (route, base) => {
-        const directions = { $: base };
         const basePath = `${base}${route.props.path || ""}`;
+        const directions = { $: base || basePath };
         const namedSuffixes = Object.keys(route.suffixes);
         if (namedSuffixes.length)
             namedSuffixes.forEach(name => {
@@ -234,7 +238,7 @@ export default class {
                     [name]: this._describe(nextRoute, path),
                 });
             });
-        else {
+        else
             route.nest.routes.forEach(nestedRoute => {
                 const nested = this._describe(nestedRoute, basePath);
                 Object.assign(
@@ -242,7 +246,6 @@ export default class {
                     nestedRoute.name ? { [nestedRoute.name]: nested } : nested,
                 );
             });
-        }
         return directions;
     };
 
