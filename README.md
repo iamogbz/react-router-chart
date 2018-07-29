@@ -4,6 +4,7 @@ Create a single source map of truth for all routes in your react app and easily 
 
 [![Build Status](https://travis-ci.org/iamogbz/react-router-chart.svg?branch=master)](https://travis-ci.org/iamogbz/react-router-chart?branch=master)
 [![Coverage Status](https://coveralls.io/repos/github/iamogbz/react-router-chart/badge.svg?branch=master)](https://coveralls.io/github/iamogbz/react-router-chart?branch=master)
+![Dependencies](https://david-dm.org/iamogbz/react-router-chart.svg)
 
 ## Shapes
 
