@@ -201,9 +201,9 @@ const paths = route.describe();
 ```
 
 ```js
-paths.base.$;                  // "/base"
-paths.base.demo.$;             // "/base/demo/:id"
-paths.base.example.$;          // "/base/example/:id"
-paths.base.demo.aChild.$;      // "/base/demo/:id/iam/a/child"
-paths.base.example.aChild.$;   // "/base/example/:id/iam/a/child"
+paths.$;                  // "/mybase"
+paths.demo.$;             // "/mybase/demo/:id"
+paths.example.$;          // "/mybase/example/:id"
+paths.demo.aChild.$;      // "/mybase/demo/:id/iam/a/child"
+paths.example.aChild.$;   // "/mybase/example/:id/iam/a/child"
 ```
