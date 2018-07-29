@@ -3,7 +3,7 @@
 Create a single source map of truth for all routes in your react app and easily render in react-router
 
 [![Build Status](https://travis-ci.org/iamogbz/react-cartographer.svg)](https://travis-ci.org/iamogbz/react-cartographer)
-[![Coverage Status](https://coveralls.io/repos/github/iamogbz/react-cartographer/badge.svg)](https://coveralls.io/github/iamogbz/react-cartographer)
+[![Coverage Status](https://coveralls.io/repos/github/iamogbz/react-cartographer/badge.svg?branch=master)](https://coveralls.io/github/iamogbz/react-cartographer?branch=master)
 
 ## Shapes
 
