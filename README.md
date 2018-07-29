@@ -2,6 +2,9 @@
 
 Create a single source map of truth for all routes in your react app and easily render in react-router
 
+[![Build Status](https://travis-ci.org/iamogbz/react-cartographer.svg)](https://travis-ci.org/iamogbz/react-cartographer)
+[![Coverage Status](https://coveralls.io/repos/github/iamogbz/react-cartographer/badge.svg)](https://coveralls.io/github/iamogbz/react-cartographer)
+
 ## Shapes
 
 ### `Route`
@@ -59,7 +62,7 @@ These methods on the `route` return a reference to the updated object for easier
 
 This is the value used for describing directions, therefore must be unique in the context of its parent route
 
-#### `.setProps({}) => route.props`
+#### `.addProps({}) => route.props`
 
 Accepts all `react-router/Route` props, using `path` as the `base` for suffixes
 
