@@ -51,7 +51,7 @@
     "node": ">=10.4.0",
     "npm": ">=6.1.0"
   },
-  "peerDependencies": {
+  "dependencies": {
     "react": "^16.4.1",
     "react-router": "^4.3.1"
   },
