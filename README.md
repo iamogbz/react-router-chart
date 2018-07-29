@@ -1,9 +1,9 @@
-# React Router Cartographer
+# React Router Chart
 
 Create a single source map of truth for all routes in your react app and easily render in react-router
 
-[![Build Status](https://travis-ci.org/iamogbz/react-cartographer.svg)](https://travis-ci.org/iamogbz/react-cartographer)
-[![Coverage Status](https://coveralls.io/repos/github/iamogbz/react-cartographer/badge.svg?branch=master)](https://coveralls.io/github/iamogbz/react-cartographer?branch=master)
+[![Build Status](https://travis-ci.org/iamogbz/react-router-chart.svg)](https://travis-ci.org/iamogbz/react-router-chart)
+[![Coverage Status](https://coveralls.io/repos/github/iamogbz/react-router-chart/badge.svg?branch=master)](https://coveralls.io/github/iamogbz/react-router-chart?branch=master)
 
 ## Shapes
 
@@ -28,7 +28,7 @@ Create a single source map of truth for all routes in your react app and easily 
 ### Start Chart
 
 ```js
-import chart from "react-cartographer";
+import chart from "react-router-chart";
 ```
 
 #### `.route(shape)`
