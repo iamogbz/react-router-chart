@@ -47,9 +47,9 @@ const route = chart.route({
   }
 });
 
-route.name;              // "base"
-route.props;             // { path: "/", strict: true }
-route.describe().base.$;   // ""
+route.name;           // "base"
+route.props;          // { path: "/", strict: true }
+route.describe().$;   // "/"
 
 route.render();
 // generates
