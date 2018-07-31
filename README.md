@@ -2,9 +2,10 @@
 
 Create a single source map of truth for all routes in your react app and easily render in react-router
 
+[![NPM Version](https://img.shields.io/npm/v/react-router-chart.svg)](https://www.npmjs.com/package/react-router-chart)
 [![Build Status](https://travis-ci.org/iamogbz/react-router-chart.svg?branch=master)](https://travis-ci.org/iamogbz/react-router-chart?branch=master)
 [![Coverage Status](https://coveralls.io/repos/github/iamogbz/react-router-chart/badge.svg?branch=master)](https://coveralls.io/github/iamogbz/react-router-chart?branch=master)
-![Dependencies](https://david-dm.org/iamogbz/react-router-chart.svg)
+[![Dependencies](https://david-dm.org/iamogbz/react-router-chart.svg)](https://www.npmjs.com/package/react-router-chart?activeTab=dependencies)
 
 ## Shapes
 
