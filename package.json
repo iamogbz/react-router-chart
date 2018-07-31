@@ -1,6 +1,6 @@
 {
   "name": "react-router-chart",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Static route mapping for React Router",
   "main": "./lib/main.js",
   "scripts": {
