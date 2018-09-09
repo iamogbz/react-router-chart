@@ -13,13 +13,13 @@ Create a single source map of truth for all routes in your react app and easily 
 
 ```js
 {
-    name: string,
-    props: {},
-    renderProps: {},
+    name: String,
+    props: Object,
+    renderProps: Object,
     suffixes: { name: path },
     nest: {
-        props: {},
-        renderProps: {},
+        props: Object,
+        renderProps: Object,
         routes: [Route],
     }
 }
@@ -43,8 +43,8 @@ const route = chart.route({
   props: {
     path: "/",
     component: App,
-    strict: true
-  }
+    strict: true,
+  },
 });
 
 route.name;           // "base"
@@ -60,31 +60,31 @@ route.render();
 
 These methods on the `route` return a reference to the updated object for easier mapping
 
-#### `.setName(string) => route.name`
+#### `.setName(String) => route.name`
 
 This is the value used for describing directions, therefore must be unique in the context of its parent route
 
-#### `.addProps({}) => route.props`
+#### `.addProps(Object) => route.props`
 
 Accepts all `react-router/Route` props, using `path` as the `base` for suffixes
 
-#### `.rPath(string) => route.props.path`
+#### `.rPath(String) => route.props.path`
 
-#### `.rkey(string) => route.props.key`
+#### `.rkey(String) => route.props.key`
 
-#### `.rExact(boolean) => route.props.exact`
+#### `.rExact(Boolean) => route.props.exact`
 
-#### `.rStrict(boolean) => route.props.strict`
+#### `.rStrict(Boolean) => route.props.strict`
 
 #### `.rLocation({ pathname }) => route.props.location`
 
-#### `.rSensitive(boolean) => route.props.sensitive`
+#### `.rSensitive(Boolean) => route.props.sensitive`
 
-#### `.rChildren(() => {}) => route.props.children`
+#### `.rChildren(Function) => route.props.children`
 
 #### `.rComponent(ReactComponent) => route.props.component`
 
-#### `.rRender(() => {}) => route.props.render`
+#### `.rRender(Function) => route.props.render`
 
 > see [`react-router`](https://reacttraining.com/react-router/web/api/Route/component) for more description of the above properties
 
@@ -132,7 +132,7 @@ Next we have the methods that generate the routes
 const childRoute = chart
   .route({
     props: { path: "/iam", component: ChildView, key: "a-child-view" },
-    suffixes: { aChild: "/a/child" }
+    suffixes: { aChild: "/a/child" },
   })
   .setRenderProps({ level: 2 });
 
@@ -140,7 +140,7 @@ const parentRoute = chart
   .route({
     props: { exact: true, strict: true, component: BaseView },
     suffixes: { example: "/example/:id", demo: "/demo/:id" },
-    renderProps: { highlight: true }
+    renderProps: { highlight: true },
   })
   .addNestedRoutes(childRoute)
   .setNestedProps({ exact: true, strict: true })
