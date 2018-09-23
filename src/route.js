@@ -4,13 +4,13 @@ import ReactRoute from "react-router/Route";
 export default class Route {
     constructor({ name, props, renderProps, suffixes, nest } = {}) {
         this.name = name ? name.toString() : undefined;
-        this.props = Object.assign({}, props);
-        this.renderProps = Object.assign({}, renderProps);
-        this.suffixes = Object.assign({}, suffixes);
+        this.props = { ...props };
+        this.renderProps = { ...renderProps };
+        this.suffixes = { ...suffixes };
         this.nest = nest
             ? {
-                  props: Object.assign({}, nest.props),
-                  renderProps: Object.assign({}, nest.renderProps),
+                  props: { ...nest.props },
+                  renderProps: { ...nest.renderProps },
                   routes: (nest.routes || []).map(shape => new Route(shape)),
               }
             : { props: {}, renderProps: {}, routes: [] };
@@ -171,15 +171,16 @@ export default class Route {
         } = route.nest;
         paths.forEach(path => {
             const fullPath = `${base}${path || ""}`;
-            const props = Object.assign({}, route.props, { path });
+            const props = { ...route.props, path };
             if (this._canRender(props)) {
                 props.path = fullPath;
-                routes.push(this._trim(Object.assign({}, route, { props })));
+                routes.push(this._trim({ ...route, props }));
             }
             nestedRoutes.forEach(nestedRoute => {
                 routes.push(
                     ...this._flatten(
-                        Object.assign({}, nestedRoute, {
+                        {
+                            ...nestedRoute,
                             props: Object.assign(
                                 {},
                                 nestedProps,
@@ -190,7 +191,7 @@ export default class Route {
                                 nestedRenderProps,
                                 nestedRoute.renderProps,
                             ),
-                        }),
+                        },
                         fullPath,
                     ),
                 );
@@ -230,11 +231,12 @@ export default class Route {
         if (namedSuffixes.length)
             namedSuffixes.forEach(name => {
                 const path = `${basePath}${route.suffixes[name]}`;
-                const nextRoute = Object.assign({}, route, {
+                const nextRoute = {
+                    ...route,
                     name,
                     props: {},
                     suffixes: {},
-                });
+                };
                 Object.assign(directions, {
                     [name]: this._describe(nextRoute, path),
                 });
