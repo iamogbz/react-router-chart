@@ -2,6 +2,10 @@ import React from "react";
 import ReactRoute from "react-router/Route";
 
 export default class Route {
+    /**
+     * Create a new Route object
+     * @param {{}} route shape
+     */
     constructor({ name, props, renderProps, suffixes, nest } = {}) {
         this.name = name ? name.toString() : undefined;
         this.props = { ...props };
@@ -18,6 +22,7 @@ export default class Route {
 
     /**
      * Get name of the route
+     * @returns {string}
      */
     get name() {
         return this._name;
@@ -36,21 +41,21 @@ export default class Route {
     /**
      * Sets name of the route
      * @param {string} name
-     * @returns {} reference to updated object
+     * @returns {Route} reference to updated object
      */
     setName = name => Object.assign(this, { name });
 
     /**
      * Sets react router route props
-     * @param {} props
-     * @returns {} reference to updated object
+     * @param {{}} props
+     * @returns {Route} reference to updated object
      */
     setProps = props => Object.assign(this, { props });
 
     /**
      * Adds to react router route props
-     * @param {} props
-     * @returns {} reference to updated object
+     * @param {{}} props
+     * @returns {Route} reference to updated object
      */
     addProps = props => {
         Object.assign(this.props, props);
@@ -78,16 +83,22 @@ export default class Route {
     /**
      * Extra properties passed to the render of this route.
      * When this is non empty react router render property is always used
+     * @param {{}} renderProps
+     * @returns {Route} reference to updated object
      */
     setRenderProps = renderProps => Object.assign(this, { renderProps });
 
     /**
      * List of paths appended to base, result used as Route.path prop
+     * @param {[]} suffixes
+     * @returns {Route} reference to updated object
      */
     setSuffixes = suffixes => Object.assign(this, { suffixes });
 
     /**
      * Add one or more suffixes to existing route.suffixes
+     * @param {{}} suffixes
+     * @returns {Route} reference to updated object
      */
     addSuffixes = suffixes =>
         Object.assign(this, {
@@ -96,6 +107,8 @@ export default class Route {
 
     /**
      * Deletes specified suffixes using names as keys
+     * @param {...string} names
+     * @returns {Route} reference to updated object
      */
     removeSuffixes = (...names) =>
         Object.assign(this, {
@@ -109,12 +122,16 @@ export default class Route {
 
     /**
      * Optional base props passed to all children routes
+     * @param {{}} props
+     * @returns {Route} reference to updated object
      */
     setNestedProps = props =>
         Object.assign(this, { nest: Object.assign(this.nest, { props }) });
 
     /**
      * Optional extra properties passed to the render of all children routes
+     * @param {{}} renderProps
+     * @returns {Route} reference to updated object
      */
     setNestedRenderProps = renderProps =>
         Object.assign(this, {
@@ -123,12 +140,16 @@ export default class Route {
 
     /**
      * List of children routes, generates react-router/Route for each base * suffixes
+     * @param {[Route]} routes
+     * @returns {Route} reference to updated object
      */
     setNestedRoutes = routes =>
         Object.assign(this, { nest: Object.assign(this.nest, { routes }) });
 
     /**
      * Add single or multiple routes to the existing list of nested routes
+     * @param {...Route} routes
+     * @returns {Route} reference to updated object
      */
     addNestedRoutes = (...routes) =>
         Object.assign(this, {
@@ -139,6 +160,8 @@ export default class Route {
 
     /**
      * Remove from list of routes only works if nested routes were named
+     * @param {...string} names
+     * @returns {Route} reference to updated object
      */
     removeNestedRoutes = (...names) =>
         Object.assign(this, {
@@ -202,6 +225,8 @@ export default class Route {
 
     /**
      * Build and return all the react-router/Route components
+     * @param {string} base to append all routes to
+     * @returns {[ReactRoute]}
      */
     render = (base = "") => {
         const routes = this._flatten(this, base);
@@ -254,6 +279,26 @@ export default class Route {
 
     /**
      * Generate easily accessible directions to all named paths
+     * @param {string} base to append all route paths to
+     * @returns {{}} object with named paths
+     * @example
+```js
+{
+    $: "/mybase",
+    {
+        demo: {
+            $: "/mybase/demo/:id",
+            { aChild: { $: "/mybase/demo/:id/iam/a/child" } }
+        }
+    },
+    {
+        example: {
+            $: "/mybase/example/:id",
+            { aChild: { $: "/mybase/example/:id/iam/a/child" } }
+        }
+    },
+}
+```
      */
     describe = (base = "") => this._describe(this, base);
 }
