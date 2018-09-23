@@ -124,7 +124,7 @@ Optional base props passed to all children routes
 
 Optional extra properties passed to the render of all children routes
 
-#### `.setNestedRoutes(...Route) => route.nest.routes`
+#### `.setNestedRoutes([Route]) => route.nest.routes`
 
 List of children routes, generates `react-router/Route` for each base \* suffixes
 
@@ -180,28 +180,28 @@ Build and return all the `react-router/Route` components
         key="/mybase/example/:id"
         exact
         strict
-        render={ props => <BaseView highlight=true /> }
+        render={ props => <BaseView highlight=true {...props} /> }
     />
     <Route
         path="/mybase/demo/:id"
         key="/mybase/demo/:id"
         exact
         strict
-        render={ props => <BaseView highlight=true /> }
+        render={ props => <BaseView highlight=true {...props} /> }
     />
     <Route
         path="/mybase/example/:id/iam/a/child"
         key="a-child-view.0"
         exact
         strict
-        render={ props => <ChildView highlight=true level=2 /> }
+        render={ props => <ChildView highlight=true level=2 {...props} /> }
     />
     <Route
         path="/mybase/demo/:id/iam/a/child"
         key="a-child-view.1"
         exact
         strict
-        render={ props => <ChildView highlight=true level=2 /> }
+        render={ props => <ChildView highlight=true level=2 {...props} /> }
     />
 </Switch>
 ```
