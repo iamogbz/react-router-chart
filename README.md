@@ -14,14 +14,26 @@ Create a single source map of truth for all routes in your react app and easily 
 ```js
 {
     name: String,
-    props: Object,
-    renderProps: Object,
-    suffixes: { name: path },
+    props: Object,           // see react-router props
+    renderProps: Object,     // see react-router render
+    suffixes: Object,        // see Suffixes shape below
     nest: {
-        props: Object,
-        renderProps: Object,
-        routes: [Route],
+        props: Object,       // same as parent props
+        renderProps: Object, // same as parent renderProps
+        routes: [Route],     // list of nested Route objects (not shapes)
     }
+}
+```
+
+### `Suffixes`
+
+JS Object with values as the path suffix and keys as path names.
+Supports multiple suffixes each with unique keys.
+
+```js
+{
+    name: String,   // key: path
+    ...
 }
 ```
 
@@ -35,7 +47,7 @@ import chart from "react-router-chart";
 
 #### `.route(shape)`
 
-Create a route object with the specified shape (see shape above)
+Create a Route object with the specified shape (see shape above)
 
 ```js
 const route = chart.route({
@@ -88,41 +100,41 @@ Accepts all `react-router/Route` props, using `path` as the `base` for suffixes
 
 > see [`react-router`](https://reacttraining.com/react-router/web/api/Route/component) for more description of the above properties
 
-#### `.setRenderProps() => route.renderProps`
+#### `.setRenderProps(Object) => route.renderProps`
 
 Extra properties passed to the render of this route. When this is non empty react router render property is always used
 
-#### `.setSuffixes() => route.suffixes`
+#### `.setSuffixes(Object) => route.suffixes`
 
 Named paths appended to base, result used as `Route.path` prop
 
-#### `.addSuffixes(...suffixes)`
+#### `.addSuffixes(Object)`
 
 Add one or more suffixes to existing `route.suffixes`
 
-#### `.removeSuffixes(...names)`
+#### `.removeSuffixes(...String)`
 
-Deletes specified suffixes using names as keys
+Takes a number of names, used as keys to delete matching path suffixes
 
-#### `.setNestedProps() => route.nest.props`
+#### `.setNestedProps(Object) => route.nest.props`
 
 Optional base props passed to all children routes
 
-#### `.setNestedRenderProps() => route.nest.renderProps`
+#### `.setNestedRenderProps(Object) => route.nest.renderProps`
 
 Optional extra properties passed to the render of all children routes
 
-#### `.setNestedRoutes() => route.nest.routes`
+#### `.setNestedRoutes(...Route) => route.nest.routes`
 
 List of children routes, generates `react-router/Route` for each base \* suffixes
 
-#### `.addNestedRoutes(...routes)`
+#### `.addNestedRoutes(...Route)`
 
 Add single or multiple routes to the existing list of nested routes
 
-#### `.removeNestedRoutes(...names)`
+#### `.removeNestedRoutes(...String)`
 
-Remove from list of routes only works if nested routes were named
+Take a number of route names and removes from list of routes. This only works on named nested routes
 
 ### Render Map
 
