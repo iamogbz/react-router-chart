@@ -147,8 +147,10 @@ describe("Route", () => {
         it("should remove nest routes and return route", () => {
             const extraRoute = new Route({ props: { path: "/mockPath" } });
             route.addNestedRoutes(extraRoute);
+            const numNestedRoutes = route.nest.routes.length;
             expect(route.removeNestedRoutes("twin", "son")).toBe(route);
-            expect(route.nest.routes).toEqual([extraRoute]);
+            expect(route.nest.routes).toContain(extraRoute);
+            expect(route.nest.routes.length).toBe(numNestedRoutes - 2);
         });
     });
 

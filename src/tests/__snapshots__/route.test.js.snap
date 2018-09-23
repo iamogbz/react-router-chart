@@ -3,6 +3,9 @@
 exports[`Route should describe routes correctly 1`] = `
 Object {
   "$": "",
+  "nonentity": Object {
+    "$": "",
+  },
   "son": Object {
     "$": "/child/son",
   },
