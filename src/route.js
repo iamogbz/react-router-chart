@@ -232,6 +232,7 @@ export default class Route {
                 const path = `${basePath}${route.suffixes[name]}`;
                 const nextRoute = Object.assign({}, route, {
                     name,
+                    props: {},
                     suffixes: {},
                 });
                 Object.assign(directions, {

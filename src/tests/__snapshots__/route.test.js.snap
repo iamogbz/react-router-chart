@@ -2,17 +2,17 @@
 
 exports[`Route should describe routes correctly 1`] = `
 Object {
-  "$": "",
+  "$": "/parent",
   "son": Object {
-    "$": "/child/son",
+    "$": "/parent/child/son",
   },
   "twin": Object {
-    "$": "/twin",
+    "$": "/parent/twin",
     "first": Object {
-      "$": "/twin-one",
+      "$": "/parent/twin-one",
     },
     "second": Object {
-      "$": "/twin-two",
+      "$": "/parent/twin-two",
     },
   },
 }
@@ -21,18 +21,23 @@ Object {
 exports[`Route should render routes correctly 1`] = `
 Array [
   <Route
+    component={[Function]}
+    path="/parent"
+    strict={true}
+  />,
+  <Route
     exact={true}
-    path="/twin-one"
+    path="/parent/twin-one"
     render={[Function]}
   />,
   <Route
     exact={true}
-    path="/twin-two"
+    path="/parent/twin-two"
     render={[Function]}
   />,
   <Route
     exact={true}
-    path="/child/son"
+    path="/parent/child/son"
     render={[MockFunction]}
   />,
 ]

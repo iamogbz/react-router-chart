@@ -4,6 +4,7 @@ const routeShape = {
     name: "base",
     props: {
         component,
+        path: "/parent",
         strict: true,
     },
     nest: {
