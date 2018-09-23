@@ -250,8 +250,8 @@ export default class Route {
     };
 
     _describe = (route, base) => {
-        const basePath = `${base}${route.props.path || ""}`;
-        const directions = { $: basePath || base };
+        const basePath = `${base || ""}${route.props.path || ""}`;
+        const directions = { $: basePath };
         const namedSuffixes = Object.keys(route.suffixes);
         if (namedSuffixes.length)
             namedSuffixes.forEach(name => {

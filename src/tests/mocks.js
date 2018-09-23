@@ -4,7 +4,7 @@ const routeShape = {
     name: "base",
     props: {
         component,
-        path: "/parent",
+        path: "",
         strict: true,
     },
     nest: {
@@ -20,6 +20,10 @@ const routeShape = {
                 name: "son",
                 props: { path: "/child/son", render: jest.fn() },
                 nest: {},
+            },
+            {
+                props: { component, path: "" },
+                suffixes: { nonentity: "" },
             },
         ],
     },
