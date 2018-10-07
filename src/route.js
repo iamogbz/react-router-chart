@@ -172,15 +172,31 @@ export default class Route {
             }),
         });
 
+    /**
+     * Check if route can be rendered using props
+     * @param {*} props
+     * @returns {boolean}
+     */
     _canRender = ({ path, children, component, render }) =>
         path && (children || component || render);
 
+    /**
+     * Get only the relevant props for rendering react route
+     * @param {Route} route object
+     * @returns {*} trimmed object
+     */
     _trim = ({ name, props, renderProps }) => ({
         name,
         props,
         renderProps,
     });
 
+    /**
+     * Convert nested routes to list of react route renderable objects
+     * @param {Route} route to be flattened
+     * @param {string} base the base path
+     * @returns {[]} list of routes with relevant react route props
+     */
     _flatten = (route, base) => {
         const routes = [];
         const pathSuffixes = Object.values(route.suffixes);
@@ -231,9 +247,10 @@ export default class Route {
         return routes.map(route => {
             const rProps = route.props;
             if (Object.values(route.renderProps).length) {
+                const ReactComponent = rProps.component;
                 rProps.render = props =>
                     rProps.component ? (
-                        <rProps.component {...route.renderProps} {...props} />
+                        <ReactComponent {...route.renderProps} {...props} />
                     ) : (
                         route.props.render({
                             ...route.renderProps,
