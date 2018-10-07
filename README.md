@@ -20,7 +20,7 @@ Create a single source map of truth for all routes in your react app and easily 
     nest: {
         props: Object,       // same as parent props
         renderProps: Object, // same as parent renderProps
-        routes: [Route],     // list of nested Route objects (not shapes)
+        routes: [Route],     // list of nested Route objects or shapes
     }
 }
 ```
