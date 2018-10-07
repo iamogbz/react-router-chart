@@ -157,56 +157,41 @@ describe("Route", () => {
     });
 
     describe("render", () => {
+        const mockProps = {
+            mockProp: "mock-value",
+            path: "/mock-path",
+        };
+        const mockRenderProps = { mockRenderProp: "mock-render-value" };
+        const newMockRoute = (props = {}, renderProps = {}) =>
+            new Route({
+                props: { ...mockProps, ...props },
+                renderProps,
+            });
+
         it("should match snapshot", () => {
             expect(route.render()).toMatchSnapshot();
         });
 
         it("should use react route render with component when render props set", () => {
             const component = jest.fn(NOOP);
-            const props = {
-                component,
-                mockProp: "mock-value",
-                path: "/mock-path",
-            };
-            const renderProps = { mockRenderProp: "mock-render-value" };
-            const mockRoute = new Route({
-                props,
-                renderProps,
-            });
+            const mockRoute = newMockRoute({ component }, mockRenderProps);
             const reactRoute = mockRoute.render().pop();
             expect(reactRoute.props.component).toBeUndefined();
             shallow(reactRoute.props.render());
-            expect(component).toBeCalledWith(renderProps, {});
+            expect(component).toBeCalledWith(mockRenderProps, {});
         });
 
         it("should use render with render fn when render props set", () => {
             const render = jest.fn();
-            const props = {
-                render,
-                mockProp: "mock-value",
-                path: "/mock-path",
-            };
-            const renderProps = { mockRenderProp: "mock-render-value" };
-            const mockRoute = new Route({
-                props,
-                renderProps,
-            });
+            const mockRoute = newMockRoute({ render }, mockRenderProps);
             const reactRoute = mockRoute.render().pop();
             expect(reactRoute.props.component).toBeUndefined();
             reactRoute.props.render();
-            expect(render).toBeCalledWith(renderProps);
+            expect(render).toBeCalledWith(mockRenderProps);
         });
 
         it("should render nothing when no render fn", () => {
-            const props = {
-                mockProp: "mock-value",
-                path: "/mock-path",
-            };
-            const renderProps = { mockRenderProp: "mock-render-value" };
-            const mockRoute = new Route({
-                props,
-                renderProps,
-            });
+            const mockRoute = newMockRoute({}, mockRenderProps);
             expect(mockRoute.render().pop()).toBeUndefined();
         });
 
@@ -214,15 +199,10 @@ describe("Route", () => {
             const component = jest.fn(NOOP);
             const render = jest.fn();
             const children = jest.fn();
-            const props = {
+            const mockRoute = newMockRoute({
                 component,
                 render,
                 children,
-                mockProp: "mock-value",
-                path: "/mock-path",
-            };
-            const mockRoute = new Route({
-                props,
             });
             const reactRoute = mockRoute.render().pop();
             expect(reactRoute).toMatchSnapshot();
@@ -231,14 +211,9 @@ describe("Route", () => {
         it("should use render over children", () => {
             const render = jest.fn();
             const children = jest.fn();
-            const props = {
+            const mockRoute = newMockRoute({
                 render,
                 children,
-                mockProp: "mock-value",
-                path: "/mock-path",
-            };
-            const mockRoute = new Route({
-                props,
             });
             const reactRoute = mockRoute.render().pop();
             expect(reactRoute).toMatchSnapshot();
@@ -246,14 +221,7 @@ describe("Route", () => {
 
         it("should use children if nothing else", () => {
             const children = jest.fn();
-            const props = {
-                children,
-                mockProp: "mock-value",
-                path: "/mock-path",
-            };
-            const mockRoute = new Route({
-                props,
-            });
+            const mockRoute = newMockRoute({ children });
             const reactRoute = mockRoute.render().pop();
             expect(reactRoute).toMatchSnapshot();
         });
