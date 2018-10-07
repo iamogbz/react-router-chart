@@ -47,9 +47,9 @@
     "url": "https://github.com/iamogbz/react-router-chart/issues"
   },
   "homepage": "https://github.com/iamogbz/react-router-chart#readme",
-  "peerDependencies": {
-    "react": "^16.0.0",
-    "react-router": "^4.0.0"
+  "dependencies": {
+    "react": "^16.4.1",
+    "react-router": "^4.3.1"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
