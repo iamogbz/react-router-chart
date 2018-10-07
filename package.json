@@ -4,9 +4,9 @@
   "description": "Static route mapping for React Router",
   "main": "./lib/main.js",
   "scripts": {
-    "build": "webpack",
     "test": "jest",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "build": "webpack"
   },
   "lint-staged": {
     "linters": {
