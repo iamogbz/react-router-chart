@@ -204,16 +204,14 @@ export default class Route {
                     ...this._flatten(
                         {
                             ...nestedRoute,
-                            props: Object.assign(
-                                {},
-                                nestedProps,
-                                nestedRoute.props,
-                            ),
-                            renderProps: Object.assign(
-                                {},
-                                nestedRenderProps,
-                                nestedRoute.renderProps,
-                            ),
+                            props: {
+                                ...nestedProps,
+                                ...nestedRoute.props,
+                            },
+                            renderProps: {
+                                ...nestedRenderProps,
+                                ...nestedRoute.renderProps,
+                            },
                         },
                         fullPath,
                     ),
@@ -254,21 +252,21 @@ export default class Route {
         const suffixNames = Object.keys(route.suffixes);
         const nextDirections = suffixNames.length
             ? suffixNames.reduce((directions, name) => {
-                const path = `${basePath}${route.suffixes[name]}`;
-                const nextRoute = {
-                    ...route,
-                    name,
-                    props: {},
-                    suffixes: {},
-                };
+                  const path = `${basePath}${route.suffixes[name]}`;
+                  const nextRoute = {
+                      ...route,
+                      name,
+                      props: {},
+                      suffixes: {},
+                  };
                   return Object.assign(directions, {
-                    [name]: this._describe(nextRoute, path),
-                });
+                      [name]: this._describe(nextRoute, path),
+                  });
               }, {})
             : route.nest.routes.reduce((directions, nextRoute) => {
                   const nested = this._describe(nextRoute, basePath);
                   return Object.assign(
-                    directions,
+                      directions,
                       nextRoute.name ? { [nextRoute.name]: nested } : nested,
                   );
               }, {});
