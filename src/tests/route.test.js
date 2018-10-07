@@ -1,3 +1,5 @@
+import { shallow } from "enzyme";
+
 import Route from "../route";
 
 import mocks from "./mocks";
@@ -154,11 +156,78 @@ describe("Route", () => {
         });
     });
 
-    it("should render routes correctly", () => {
-        expect(route.render()).toMatchSnapshot();
+    describe("render", () => {
+        const mockProps = {
+            mockProp: "mock-value",
+            path: "/mock-path",
+        };
+        const mockRenderProps = { mockRenderProp: "mock-render-value" };
+        const newMockRoute = (props = {}, renderProps = {}) =>
+            new Route({
+                props: { ...mockProps, ...props },
+                renderProps,
+            });
+
+        it("should match snapshot", () => {
+            expect(route.render()).toMatchSnapshot();
+        });
+
+        it("should use react route render with component when render props set", () => {
+            const component = jest.fn(NOOP);
+            const mockRoute = newMockRoute({ component }, mockRenderProps);
+            const reactRoute = mockRoute.render().pop();
+            expect(reactRoute.props.component).toBeUndefined();
+            shallow(reactRoute.props.render());
+            expect(component).toBeCalledWith(mockRenderProps, {});
+        });
+
+        it("should use render with render fn when render props set", () => {
+            const render = jest.fn();
+            const mockRoute = newMockRoute({ render }, mockRenderProps);
+            const reactRoute = mockRoute.render().pop();
+            expect(reactRoute.props.component).toBeUndefined();
+            reactRoute.props.render();
+            expect(render).toBeCalledWith(mockRenderProps);
+        });
+
+        it("should render nothing when no render fn", () => {
+            const mockRoute = newMockRoute({}, mockRenderProps);
+            expect(mockRoute.render().pop()).toBeUndefined();
+        });
+
+        it("should use component over render and children", () => {
+            const component = jest.fn(NOOP);
+            const render = jest.fn();
+            const children = jest.fn();
+            const mockRoute = newMockRoute({
+                component,
+                render,
+                children,
+            });
+            const reactRoute = mockRoute.render().pop();
+            expect(reactRoute).toMatchSnapshot();
+        });
+
+        it("should use render over children", () => {
+            const render = jest.fn();
+            const children = jest.fn();
+            const mockRoute = newMockRoute({
+                render,
+                children,
+            });
+            const reactRoute = mockRoute.render().pop();
+            expect(reactRoute).toMatchSnapshot();
+        });
+
+        it("should use children if nothing else", () => {
+            const children = jest.fn();
+            const mockRoute = newMockRoute({ children });
+            const reactRoute = mockRoute.render().pop();
+            expect(reactRoute).toMatchSnapshot();
+        });
     });
 
-    it("should describe routes correctly", () => {
-        expect(route.describe()).toMatchSnapshot();
-    });
+    describe("describe", () =>
+        it("should match snapshot", () =>
+            expect(route.describe()).toMatchSnapshot()));
 });

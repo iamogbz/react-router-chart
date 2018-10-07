@@ -1,4 +1,4 @@
-const component = () => {};
+const component = jest.fn();
 
 const routeShape = {
     name: "base",

@@ -139,7 +139,8 @@ export default class Route {
         });
 
     /**
-     * List of children routes, generates react-router/Route for each base * suffixes
+     * List of children routes which will generate react-router/Route
+     * for every combination of base and suffixes
      * @param {[Route]} routes
      * @returns {Route} reference to updated object
      */
@@ -172,15 +173,31 @@ export default class Route {
             }),
         });
 
+    /**
+     * Check if route can be rendered using props
+     * @param {*} props
+     * @returns {boolean}
+     */
     _canRender = ({ path, children, component, render }) =>
         path && (children || component || render);
 
+    /**
+     * Get only the relevant props for rendering react route
+     * @param {Route} route object
+     * @returns {*} trimmed object
+     */
     _trim = ({ name, props, renderProps }) => ({
         name,
         props,
         renderProps,
     });
 
+    /**
+     * Convert nested routes to list of react route renderable objects
+     * @param {Route} route to be flattened
+     * @param {string} base the base path
+     * @returns {[]} list of routes with relevant react route props
+     */
     _flatten = (route, base) => {
         const routes = [];
         const pathSuffixes = Object.values(route.suffixes);
@@ -229,20 +246,22 @@ export default class Route {
     render = (base = "") => {
         const routes = this._flatten(this, base);
         return routes.map(route => {
-            const rProps = route.props;
+            const rProps = { ...route.props };
+            const ReactComponent = route.props.component;
+            const renderFn = route.props.render || route.props.children;
             if (Object.values(route.renderProps).length) {
-                rProps.render = props =>
-                    rProps.component ? (
-                        <rProps.component {...route.renderProps} {...props} />
+                rProps.render = props => {
+                    const renderProps = { ...route.renderProps, ...props };
+                    return ReactComponent ? (
+                        <ReactComponent {...renderProps} />
                     ) : (
-                        route.props.render({
-                            ...route.renderProps,
-                            ...props,
-                        })
+                        renderFn(renderProps)
                     );
+                };
                 delete rProps.component;
-                delete rProps.children;
             }
+            if (rProps.render) delete rProps.children;
+            if (rProps.component) delete rProps.render;
             return <ReactRoute {...rProps} key={rProps.key || rProps.path} />;
         });
     };

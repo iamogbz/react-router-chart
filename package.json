@@ -4,9 +4,9 @@
   "description": "Static route mapping for React Router",
   "main": "./lib/main.js",
   "scripts": {
-    "build": "webpack",
     "test": "jest",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "build": "webpack"
   },
   "lint-staged": {
     "linters": {
@@ -24,6 +24,7 @@
       "./artifacts/",
       "./node_modules/"
     ],
+    "setupTestFrameworkScriptFile": "./config/setupTests.js",
     "coverageDirectory": "./artifacts/coverage"
   },
   "repository": {
@@ -60,6 +61,8 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "coveralls": "^3.0.2",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.6.0",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^17.0.0",
     "eslint-config-prettier": "^2.9.0",
@@ -70,6 +73,7 @@
     "jest": "^23.4.1",
     "lint-staged": "^7.2.0",
     "prettier": "^1.13.7",
+    "react-dom": "^16.4.1",
     "rxjs": "^6.2.2",
     "webpack": "^4.16.3",
     "webpack-cli": "^3.1.0"
