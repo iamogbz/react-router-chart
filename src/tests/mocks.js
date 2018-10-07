@@ -19,6 +19,7 @@ const routeShape = {
             {
                 name: "son",
                 props: { path: "/child/son", render: jest.fn() },
+                nest: {},
             },
             {
                 props: { component, path: "" },
