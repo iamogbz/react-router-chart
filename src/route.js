@@ -272,6 +272,7 @@ export default class Route {
                 Object.assign(
                     directions,
                     nestedRoute.name ? { [nestedRoute.name]: nested } : nested,
+                    { $: directions.$ },
                 );
             });
         return directions;
