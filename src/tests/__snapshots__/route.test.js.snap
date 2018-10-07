@@ -40,3 +40,28 @@ Array [
   />,
 ]
 `;
+
+exports[`Route render should use children if nothing else 1`] = `
+<Route
+  mockProp="mock-value"
+  path="/mock-path"
+>
+  [MockFunction]
+</Route>
+`;
+
+exports[`Route render should use component over render and children 1`] = `
+<Route
+  component={[MockFunction]}
+  mockProp="mock-value"
+  path="/mock-path"
+/>
+`;
+
+exports[`Route render should use render over children 1`] = `
+<Route
+  mockProp="mock-value"
+  path="/mock-path"
+  render={[MockFunction]}
+/>
+`;
