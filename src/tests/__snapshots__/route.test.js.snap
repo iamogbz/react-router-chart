@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Route should describe routes correctly 1`] = `
+exports[`Route describe should match snapshot 1`] = `
 Object {
   "$": "",
   "nonentity": Object {
@@ -21,7 +21,7 @@ Object {
 }
 `;
 
-exports[`Route should render routes correctly 1`] = `
+exports[`Route render should match snapshot 1`] = `
 Array [
   <Route
     exact={true}

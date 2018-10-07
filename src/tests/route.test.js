@@ -154,11 +154,11 @@ describe("Route", () => {
         });
     });
 
-    it("should render routes correctly", () => {
-        expect(route.render()).toMatchSnapshot();
-    });
+    describe("render", () =>
+        it("should match snapshot", () =>
+            expect(route.render()).toMatchSnapshot()));
 
-    it("should describe routes correctly", () => {
-        expect(route.describe()).toMatchSnapshot();
-    });
+    describe("describe", () =>
+        it("should match snapshot", () =>
+            expect(route.describe()).toMatchSnapshot()));
 });
