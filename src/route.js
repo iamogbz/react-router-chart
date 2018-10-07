@@ -251,10 +251,9 @@ export default class Route {
 
     _describe = (route, base) => {
         const basePath = `${base || ""}${route.props.path || ""}`;
-        const directions = { $: basePath };
-        const namedSuffixes = Object.keys(route.suffixes);
-        if (namedSuffixes.length)
-            namedSuffixes.forEach(name => {
+        const suffixNames = Object.keys(route.suffixes);
+        const nextDirections = suffixNames.length
+            ? suffixNames.reduce((directions, name) => {
                 const path = `${basePath}${route.suffixes[name]}`;
                 const nextRoute = {
                     ...route,
@@ -262,20 +261,18 @@ export default class Route {
                     props: {},
                     suffixes: {},
                 };
-                Object.assign(directions, {
+                  return Object.assign(directions, {
                     [name]: this._describe(nextRoute, path),
                 });
-            });
-        else
-            route.nest.routes.forEach(nestedRoute => {
-                const nested = this._describe(nestedRoute, basePath);
-                Object.assign(
+              }, {})
+            : route.nest.routes.reduce((directions, nextRoute) => {
+                  const nested = this._describe(nextRoute, basePath);
+                  return Object.assign(
                     directions,
-                    nestedRoute.name ? { [nestedRoute.name]: nested } : nested,
-                    { $: directions.$ },
-                );
-            });
-        return directions;
+                      nextRoute.name ? { [nextRoute.name]: nested } : nested,
+                  );
+              }, {});
+        return Object.assign(nextDirections, { $: basePath });
     };
 
     /**
