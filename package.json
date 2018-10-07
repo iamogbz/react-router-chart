@@ -1,6 +1,6 @@
 {
   "name": "react-router-chart",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Static route mapping for React Router",
   "main": "./lib/main.js",
   "scripts": {
@@ -47,9 +47,9 @@
     "url": "https://github.com/iamogbz/react-router-chart/issues"
   },
   "homepage": "https://github.com/iamogbz/react-router-chart#readme",
-  "dependencies": {
-    "react": "^16.4.1",
-    "react-router": "^4.3.1"
+  "peerDependencies": {
+    "react": "^16.0.0",
+    "react-router": "^4.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
