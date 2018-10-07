@@ -24,9 +24,7 @@ const routeShape = {
                 props: { component, path: "" },
                 suffixes: { nonentity: "" },
             },
-            {
-                props: { path: "/anonymous" },
-            },
+            { props: { path: "/anonymous" } },
         ],
     },
 };
