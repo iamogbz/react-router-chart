@@ -204,16 +204,14 @@ export default class Route {
                     ...this._flatten(
                         {
                             ...nestedRoute,
-                            props: Object.assign(
-                                {},
-                                nestedProps,
-                                nestedRoute.props,
-                            ),
-                            renderProps: Object.assign(
-                                {},
-                                nestedRenderProps,
-                                nestedRoute.renderProps,
-                            ),
+                            props: {
+                                ...nestedProps,
+                                ...nestedRoute.props,
+                            },
+                            renderProps: {
+                                ...nestedRenderProps,
+                                ...nestedRoute.renderProps,
+                            },
                         },
                         fullPath,
                     ),
@@ -251,30 +249,28 @@ export default class Route {
 
     _describe = (route, base) => {
         const basePath = `${base || ""}${route.props.path || ""}`;
-        const directions = { $: basePath };
-        const namedSuffixes = Object.keys(route.suffixes);
-        if (namedSuffixes.length)
-            namedSuffixes.forEach(name => {
-                const path = `${basePath}${route.suffixes[name]}`;
-                const nextRoute = {
-                    ...route,
-                    name,
-                    props: {},
-                    suffixes: {},
-                };
-                Object.assign(directions, {
-                    [name]: this._describe(nextRoute, path),
-                });
-            });
-        else
-            route.nest.routes.forEach(nestedRoute => {
-                const nested = this._describe(nestedRoute, basePath);
-                Object.assign(
-                    directions,
-                    nestedRoute.name ? { [nestedRoute.name]: nested } : nested,
-                );
-            });
-        return directions;
+        const suffixNames = Object.keys(route.suffixes);
+        const nextDirections = suffixNames.length
+            ? suffixNames.reduce((directions, name) => {
+                  const path = `${basePath}${route.suffixes[name]}`;
+                  const nextRoute = {
+                      ...route,
+                      name,
+                      props: {},
+                      suffixes: {},
+                  };
+                  return Object.assign(directions, {
+                      [name]: this._describe(nextRoute, path),
+                  });
+              }, {})
+            : route.nest.routes.reduce((directions, nextRoute) => {
+                  const nested = this._describe(nextRoute, basePath);
+                  return Object.assign(
+                      directions,
+                      nextRoute.name ? { [nextRoute.name]: nested } : nested,
+                  );
+              }, {});
+        return Object.assign(nextDirections, { $: basePath });
     };
 
     /**
