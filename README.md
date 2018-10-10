@@ -4,7 +4,7 @@ Create a single source map of truth for all routes in your react app and easily 
 
 [![NPM Version](https://img.shields.io/npm/v/react-router-chart.svg)](https://www.npmjs.com/package/react-router-chart)
 [![Build Status](https://travis-ci.org/iamogbz/react-router-chart.svg?branch=master)](https://travis-ci.org/iamogbz/react-router-chart?branch=master)
-[![Coverage Status](https://coveralls.io/repos/github/iamogbz/react-router-chart/badge.svg?branch=master)](https://coveralls.io/github/iamogbz/react-router-chart?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/iamogbz/react-router-chart/badge.svg?branch=master&cache=0)](https://coveralls.io/github/iamogbz/react-router-chart?branch=master)
 [![Dependencies](https://david-dm.org/iamogbz/react-router-chart.svg)](https://www.npmjs.com/package/react-router-chart?activeTab=dependencies)
 
 ## Shapes
@@ -42,7 +42,7 @@ Supports multiple suffixes each with unique keys.
 ### Start Chart
 
 ```js
-import chart from "react-router-chart";
+import Chart from "react-router-chart";
 ```
 
 #### `.route(shape)`
@@ -50,7 +50,7 @@ import chart from "react-router-chart";
 Create a Route object with the specified shape (see shape above)
 
 ```js
-const route = chart.route({
+const route = Chart.route({
   name: "base",
   props: {
     path: "/",
@@ -141,14 +141,14 @@ Take a number of route names and removes from list of routes. This only works on
 Next we have the methods that generate the routes
 
 ```js
-const childRoute = chart
+const childRoute = Chart
   .route({
     props: { path: "/iam", component: ChildView, key: "a-child-view" },
     suffixes: { aChild: "/a/child" },
   })
   .setRenderProps({ level: 2 });
 
-const parentRoute = chart
+const parentRoute = Chart
   .route({
     props: { exact: true, strict: true, component: BaseView },
     suffixes: { example: "/example/:id", demo: "/demo/:id" },
@@ -158,7 +158,7 @@ const parentRoute = chart
   .setNestedProps({ exact: true, strict: true })
   .setNestedRenderProps({ highlight: true, level: 1 });
 
-const baseRoute = chart.route({
+const baseRoute = Chart.route({
   name: "base",
   props: { path: "/mybase" },
   nest: { routes: [parentRoute] },
