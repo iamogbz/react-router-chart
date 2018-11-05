@@ -1,6 +1,6 @@
 {
   "name": "react-router-chart",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Static route mapping for React Router",
   "main": "./lib/main.js",
   "scripts": {
@@ -49,13 +49,13 @@
   },
   "homepage": "https://github.com/iamogbz/react-router-chart#readme",
   "dependencies": {
-    "react": "^16.4.1",
+    "react": "^16.6.0",
     "react-router": "^4.3.1"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-eslint": "^8.2.6",
-    "babel-loader": "^7.1.5",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.4",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
@@ -63,19 +63,19 @@
     "coveralls": "^3.0.2",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.6.0",
-    "eslint": "^4.19.1",
-    "eslint-config-airbnb": "^17.0.0",
-    "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-import": "^2.13.0",
-    "eslint-plugin-jsx-a11y": "^6.1.1",
-    "eslint-plugin-prettier": "^2.6.2",
-    "eslint-plugin-react": "^7.10.0",
-    "jest": "^23.4.1",
-    "lint-staged": "^7.2.0",
-    "prettier": "^1.13.7",
-    "react-dom": "^16.4.1",
-    "rxjs": "^6.2.2",
-    "webpack": "^4.16.3",
-    "webpack-cli": "^3.1.0"
+    "eslint": "^5.8.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-prettier": "^3.0.0",
+    "eslint-plugin-react": "^7.11.0",
+    "jest": "^23.6.0",
+    "lint-staged": "^8.0.4",
+    "prettier": "^1.14.3",
+    "react-dom": "^16.6.0",
+    "rxjs": "^6.3.3",
+    "webpack": "^4.24.0",
+    "webpack-cli": "^3.1.2"
   }
 }
