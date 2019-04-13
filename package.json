@@ -1,36 +1,17 @@
 {
     "name": "react-router-chart",
-    "version": "0.0.9",
+    "version": "0.0.0",
     "description": "Static route mapping for React Router",
+    "author": "iamogbz",
+    "license": "GPL-3.0",
     "main": "./lib/main.js",
-    "scripts": {
-        "test": "jest",
-        "precommit": "lint-staged",
-        "build": "webpack --mode=production",
-        "watch": "webpack --mode=development --watch"
-    },
-    "lint-staged": {
-        "linters": {
-            "*.js": [
-                "eslint",
-                "jest --bail --findRelatedTests"
-            ]
-        },
-        "ignore": [
-            "**/lib/*"
-        ]
-    },
-    "jest": {
-        "testPathIgnorePatterns": [
-            "./artifacts/",
-            "./node_modules/"
-        ],
-        "setupTestFrameworkScriptFile": "./config/setupTests.js",
-        "coverageDirectory": "./artifacts/coverage"
-    },
+    "homepage": "https://github.com/iamogbz/react-router-chart#readme",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/iamogbz/react-router-chart.git"
+    },
+    "bugs": {
+        "url": "https://github.com/iamogbz/react-router-chart/issues"
     },
     "keywords": [
         "react",
@@ -43,12 +24,62 @@
         "graph",
         "cartographer"
     ],
-    "author": "iamogbz",
-    "license": "GPL-3.0",
-    "bugs": {
-        "url": "https://github.com/iamogbz/react-router-chart/issues"
+    "engines": {
+        "node": ">=10.4.0",
+        "npm": ">=6.1.0"
     },
-    "homepage": "https://github.com/iamogbz/react-router-chart#readme",
+    "scripts": {
+        "commit": "git-cz",
+        "commitlint": "commitlint-travis",
+        "test": "jest",
+        "build": "webpack --mode=production",
+        "watch": "webpack --mode=development --watch",
+        "release": "semantic-release"
+    },
+    "release": {
+        "dryRun": true,
+        "plugins": [
+            "@semantic-release/commit-analyzer",
+            "@semantic-release/release-notes-generator",
+            "@semantic-release/github",
+            "@semantic-release/npm"
+        ]
+    },
+    "commitlint": {
+        "extends": [
+            "@commitlint/config-conventional"
+        ]
+    },
+    "config": {
+        "commitizen": {
+            "path": "cz-conventional-changelog"
+        }
+    },
+    "lint-staged": {
+        "linters": {
+            "*.js": [
+                "eslint",
+                "jest --bail --findRelatedTests"
+            ]
+        },
+        "ignore": [
+            "**/lib/*"
+        ]
+    },
+    "husky": {
+        "hooks": {
+            "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+            "pre-commit": "lint-staged"
+        }
+    },
+    "jest": {
+        "testPathIgnorePatterns": [
+            "./artifacts/",
+            "./node_modules/"
+        ],
+        "setupTestFrameworkScriptFile": "./config/setupTests.js",
+        "coverageDirectory": "./artifacts/coverage"
+    },
     "dependencies": {
         "react": "^16.6.0",
         "react-router": "^5.0.0"
@@ -58,11 +89,17 @@
         "@babel/core": "^7.3.4",
         "@babel/preset-env": "^7.3.4",
         "@babel/preset-react": "^7.0.0",
+        "@commitlint/cli": "^7.5.2",
+        "@commitlint/config-conventional": "^7.5.0",
+        "@commitlint/travis-cli": "^7.5.2",
+        "acorn": "^6.1.1",
         "babel-core": "^7.0.0-bridge.0",
         "babel-eslint": "^10.0.1",
         "babel-loader": "^8.0.5",
         "babel-plugin-transform-class-properties": "^6.24.1",
         "coveralls": "^3.0.3",
+        "commitizen": "^3.0.7",
+        "cz-conventional-changelog": "^2.1.0",
         "enzyme": "^3.9.0",
         "enzyme-adapter-react-16": "^1.10.0",
         "eslint": "^5.16.0",
@@ -72,11 +109,13 @@
         "eslint-plugin-jsx-a11y": "^6.2.1",
         "eslint-plugin-prettier": "^3.0.1",
         "eslint-plugin-react": "^7.12.4",
+        "husky": "^1.3.1",
         "jest": "^24.1.0",
         "lint-staged": "^8.1.4",
-        "prettier": "^1.14.3",
+        "prettier": "^1.16.4",
         "react-dom": "^16.8.3",
         "rxjs": "^6.4.0",
+        "semantic-release": "^15.13.3",
         "webpack": "^4.29.6",
         "webpack-cli": "^3.2.3"
     }

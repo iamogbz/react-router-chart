@@ -1,5 +1,15 @@
 language: node_js
 node_js:
-  - 10
-script:
-  - jest --coverage --coverageReporters=text-lcov | coveralls
+  - '10'
+jobs:
+  include:
+    - stage: lint, test and build
+      name: commitlint
+      script: npm run commitlint
+    - name: test
+      script: jest --coverage --coverageReporters=text-lcov | coveralls
+    - name: build
+      script: npm run build
+    - stage: deploy
+      script: npm run build && npm run release
+      if: branch = master
