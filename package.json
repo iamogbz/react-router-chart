@@ -41,7 +41,12 @@
             "@semantic-release/commit-analyzer",
             "@semantic-release/release-notes-generator",
             "@semantic-release/github",
-            ["@semantic-release/npm", { "pkgRoot": "./lib" }]
+            [
+                "@semantic-release/npm",
+                {
+                    "pkgRoot": "./lib"
+                }
+            ]
         ]
     },
     "commitlint": {
@@ -79,9 +84,9 @@
         "setupTestFrameworkScriptFile": "./config/setupTests.js",
         "coverageDirectory": "./artifacts/coverage"
     },
-    "dependencies": {
-        "react": "^16.6.0",
-        "react-router": "^5.0.0"
+    "peerDependencies": {
+        "react": "^16.0.0",
+        "react-router": "^4.0.0"
     },
     "devDependencies": {
         "@babel/cli": "^7.2.3",
@@ -113,9 +118,11 @@
         "jest": "^24.1.0",
         "lint-staged": "^8.1.4",
         "prettier": "^1.16.4",
+        "react": "^16.8.6",
+        "react-router": "^4.3.1",
         "react-dom": "^16.8.3",
         "rxjs": "^6.4.0",
-        "semantic-release": "^15.13.9",
+        "semantic-release": "^15.13.3",
         "webpack": "^4.29.6",
         "webpack-cli": "^3.2.3"
     }
