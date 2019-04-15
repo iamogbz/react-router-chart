@@ -4,7 +4,7 @@
     "description": "Static route mapping for React Router",
     "author": "iamogbz",
     "license": "GPL-3.0",
-    "main": "./lib/main.js",
+    "main": "./main.js",
     "homepage": "https://github.com/iamogbz/react-router-chart#readme",
     "repository": {
         "type": "git",
@@ -41,7 +41,7 @@
             "@semantic-release/commit-analyzer",
             "@semantic-release/release-notes-generator",
             "@semantic-release/github",
-            "@semantic-release/npm"
+            ["@semantic-release/npm", { "pkgRoot": "./lib" }]
         ]
     },
     "commitlint": {
@@ -96,8 +96,9 @@
         "babel-eslint": "^10.0.1",
         "babel-loader": "^8.0.5",
         "babel-plugin-transform-class-properties": "^6.24.1",
-        "coveralls": "^3.0.3",
         "commitizen": "^3.0.7",
+        "copy-webpack-plugin": "^5.0.2",
+        "coveralls": "^3.0.3",
         "cz-conventional-changelog": "^2.1.0",
         "enzyme": "^3.9.0",
         "enzyme-adapter-react-16": "^1.10.0",
@@ -114,7 +115,7 @@
         "prettier": "^1.16.4",
         "react-dom": "^16.8.3",
         "rxjs": "^6.4.0",
-        "semantic-release": "^15.13.3",
+        "semantic-release": "^15.13.9",
         "webpack": "^4.29.6",
         "webpack-cli": "^3.2.3"
     }

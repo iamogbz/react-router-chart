@@ -1,4 +1,5 @@
 const path = require("path");
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
     mode: "production",
@@ -8,6 +9,7 @@ module.exports = {
         path: path.resolve(__dirname, "lib"),
         libraryTarget: "commonjs-module",
     },
+    plugins: [new CopyPlugin(["package.json"])],
     module: {
         rules: [
             {
