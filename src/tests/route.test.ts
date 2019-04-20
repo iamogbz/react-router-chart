@@ -7,7 +7,7 @@ import mocks from "./mocks";
 const NOOP = () => {};
 
 describe("Route", () => {
-    let route;
+    let route: Route & AnyObject;
 
     beforeEach(() => {
         route = new Route(mocks.routeShape);
@@ -17,13 +17,16 @@ describe("Route", () => {
         it("should use string value of name", () => {
             const mockName = "mockName";
             const name = { toString: () => mockName };
-            route = new Route({ name });
+            route = new Route({ name } as RouteShape);
             expect(route.name).toEqual(mockName);
         });
         it("should initialize to empty nest", () => {
             route = new Route();
-            const emptyNest = { props: {}, renderProps: {}, routes: [] };
-            expect(route.nest).toEqual(emptyNest);
+            expect(route.nest).toEqual({
+                props: {},
+                renderProps: {},
+                routes: [],
+            });
         });
     });
 
@@ -32,13 +35,6 @@ describe("Route", () => {
             const mockName = "mock-name";
             expect(route.setName(mockName)).toBe(route);
             expect(route.name).toEqual(mockName);
-        });
-        it("should call console.warn on non string value", () => {
-            const mockName = {};
-            console.warn = jest.fn();
-            route.setName(mockName);
-            expect(console.warn).toBeCalled();
-            console.warn.mockRestore();
         });
     });
 
@@ -56,7 +52,7 @@ describe("Route", () => {
         });
 
         it("should call addProps", () => {
-            route.addProps = jest.fn();
+            const addPropsSpy = jest.spyOn(route, "addProps");
             Object.entries({
                 children: NOOP,
                 component: NOOP,
@@ -70,8 +66,8 @@ describe("Route", () => {
             }).forEach(([key, value]) => {
                 const method = `r${key[0].toUpperCase()}${key.substring(1)}`;
                 route[method](value);
-                expect(route.addProps).toBeCalledWith({ [key]: value });
-                route.addProps.mockReset();
+                expect(addPropsSpy).toBeCalledWith({ [key]: value });
+                addPropsSpy.mockReset();
             });
         });
     });

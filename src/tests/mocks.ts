@@ -28,7 +28,7 @@ const routeShape = {
             { props: { path: "/anonymous" } },
         ],
     },
-};
+} as RouteShape;
 
 const Route = () => ({
     render: jest.fn(),

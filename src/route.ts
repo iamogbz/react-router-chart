@@ -1,12 +1,17 @@
-import React from "react";
-import ReactRoute from "react-router/Route";
+import React, { ReactElement } from "react";
+import { Route as ReactRoute } from "react-router";
 
 export default class Route {
+    _name: string;
+    props: AnyObject;
+    renderProps: AnyObject;
+    suffixes: Suffixes;
+    nest: { props: AnyObject; renderProps: AnyObject; routes: Route[] };
     /**
      * Create a new Route object
      * @param {{}} route shape
      */
-    constructor({ name, props, renderProps, suffixes, nest } = {}) {
+    constructor({ name, props, renderProps, suffixes, nest }: RouteShape = {}) {
         this.name = name ? name.toString() : undefined;
         this.props = { ...props };
         this.renderProps = { ...renderProps };
@@ -15,24 +20,24 @@ export default class Route {
             ? {
                   props: { ...nest.props },
                   renderProps: { ...nest.renderProps },
-                  routes: (nest.routes || []).map(shape => new Route(shape)),
+                  routes: (nest.routes || ([] as RouteShape[])).map(
+                      shape => new Route(shape),
+                  ),
               }
             : { props: {}, renderProps: {}, routes: [] };
     }
 
     /**
      * Get name of the route
-     * @returns {string}
      */
-    get name() {
+    get name(): string {
         return this._name;
     }
 
     /**
-     * Sets name of the route
-     * @param {string} value non string values are rejected and warned against
+     * Sets name of the route. Non string values are rejected and warned against.
      */
-    set name(value) {
+    set name(value: string) {
         this._name = value;
         if (value && typeof value !== "string")
             console.warn(`Route name was set to non string value '${value}'`);
@@ -43,116 +48,112 @@ export default class Route {
      * @param {string} name
      * @returns {Route} reference to updated object
      */
-    setName = name => Object.assign(this, { name });
+    setName = (name: string): Route => Object.assign(this, { name });
 
     /**
      * Sets react router route props
      * @param {{}} props
      * @returns {Route} reference to updated object
      */
-    setProps = props => Object.assign(this, { props });
+    setProps = (props: {}): Route => Object.assign(this, { props });
 
     /**
      * Adds to react router route props
      * @param {{}} props
      * @returns {Route} reference to updated object
      */
-    addProps = props => {
+    addProps = (props: {}): Route => {
         Object.assign(this.props, props);
         return this;
     };
 
-    rPath = path => this.addProps({ path });
+    rPath = (path: string) => this.addProps({ path });
 
-    rKey = key => this.addProps({ key });
+    rKey = (key: string) => this.addProps({ key });
 
-    rExact = exact => this.addProps({ exact });
+    rExact = (exact: boolean) => this.addProps({ exact });
 
-    rStrict = strict => this.addProps({ strict });
+    rStrict = (strict: boolean) => this.addProps({ strict });
 
-    rLocation = location => this.addProps({ location });
+    rLocation = (location: string) => this.addProps({ location });
 
-    rSensitive = sensitive => this.addProps({ sensitive });
+    rSensitive = (sensitive: boolean) => this.addProps({ sensitive });
 
-    rChildren = children => this.addProps({ children });
+    rChildren = (children: any) => this.addProps({ children });
 
-    rComponent = component => this.addProps({ component });
+    rComponent = (component: ReactElement) => this.addProps({ component });
 
-    rRender = render => this.addProps({ render });
+    rRender = (render: Function) => this.addProps({ render });
 
     /**
      * Extra properties passed to the render of this route.
-     * When this is non empty react router render property is always used
-     * @param {{}} renderProps
-     * @returns {Route} reference to updated object
+     * When this is non empty react router render property is always used.
+     * Returns reference to updated object.
      */
-    setRenderProps = renderProps => Object.assign(this, { renderProps });
+    setRenderProps = (renderProps: AnyObject): Route =>
+        Object.assign(this, { renderProps });
 
     /**
-     * List of paths appended to base, result used as Route.path prop
-     * @param {[]} suffixes
-     * @returns {Route} reference to updated object
+     * List of paths appended to base, result used as Route.path prop.
+     * Returns reference to updated object.
      */
-    setSuffixes = suffixes => Object.assign(this, { suffixes });
+    setSuffixes = (suffixes: Suffixes): Route =>
+        Object.assign(this, { suffixes });
 
     /**
-     * Add one or more suffixes to existing route.suffixes
-     * @param {{}} suffixes
-     * @returns {Route} reference to updated object
+     * Add one or more suffixes to existing route.suffixes.
+     * Returns reference to updated object.
      */
-    addSuffixes = suffixes =>
+    addSuffixes = (suffixes: Suffixes): Route =>
         Object.assign(this, {
             suffixes: Object.assign(this.suffixes, suffixes),
         });
 
     /**
      * Deletes specified suffixes using names as keys
-     * @param {...string} names
-     * @returns {Route} reference to updated object
      */
-    removeSuffixes = (...names) =>
+    removeSuffixes = (...names: string[]): Route =>
         Object.assign(this, {
             suffixes: Object.keys(this.suffixes)
                 .filter(key => !names.includes(key))
-                .reduce((obj, key) => {
-                    obj[key] = this.suffixes[key];
-                    return obj;
-                }, {}),
+                .reduce(
+                    (obj, key) => {
+                        obj[key] = this.suffixes[key];
+                        return obj;
+                    },
+                    {} as AnyObject,
+                ),
         });
 
     /**
-     * Optional base props passed to all children routes
-     * @param {{}} props
-     * @returns {Route} reference to updated object
+     * Optional base props passed to all children routes.
+     * Returns reference to updated object.
      */
-    setNestedProps = props =>
+    setNestedProps = (props: AnyObject): Route =>
         Object.assign(this, { nest: Object.assign(this.nest, { props }) });
 
     /**
-     * Optional extra properties passed to the render of all children routes
-     * @param {{}} renderProps
-     * @returns {Route} reference to updated object
+     * Optional extra properties passed to the render of all children routes.
+     * Returns reference to updated object.
      */
-    setNestedRenderProps = renderProps =>
+    setNestedRenderProps = (renderProps: AnyObject): Route =>
         Object.assign(this, {
             nest: Object.assign(this.nest, { renderProps }),
         });
 
     /**
      * List of children routes which will generate react-router/Route
-     * for every combination of base and suffixes
-     * @param {[Route]} routes
-     * @returns {Route} reference to updated object
+     * for every combination of base and suffixes.
+     * Returns reference to updated object.
      */
-    setNestedRoutes = routes =>
+    setNestedRoutes = (routes: Route[]): Route =>
         Object.assign(this, { nest: Object.assign(this.nest, { routes }) });
 
     /**
-     * Add single or multiple routes to the existing list of nested routes
-     * @param {...Route} routes
-     * @returns {Route} reference to updated object
+     * Add single or multiple routes to the existing list of nested routes.
+     * Returns reference to updated object.
      */
-    addNestedRoutes = (...routes) =>
+    addNestedRoutes = (...routes: Route[]): Route =>
         Object.assign(this, {
             nest: Object.assign(this.nest, {
                 routes: [...this.nest.routes, ...routes],
@@ -160,11 +161,10 @@ export default class Route {
         });
 
     /**
-     * Remove from list of routes only works if nested routes were named
-     * @param {...string} names
-     * @returns {Route} reference to updated object
+     * Remove from list of routes only works if nested routes were named.
+     * Returns reference to updated object.
      */
-    removeNestedRoutes = (...names) =>
+    removeNestedRoutes = (...names: string[]): Route =>
         Object.assign(this, {
             nest: Object.assign(this.nest, {
                 routes: this.nest.routes.filter(
@@ -175,31 +175,24 @@ export default class Route {
 
     /**
      * Check if route can be rendered using props
-     * @param {*} props
-     * @returns {boolean}
      */
-    _canRender = ({ path, children, component, render }) =>
+    _canRender = ({ path, children, component, render }: AnyObject): boolean =>
         path && (children || component || render);
 
     /**
-     * Get only the relevant props for rendering react route
-     * @param {Route} route object
-     * @returns {*} trimmed object
+     * Get only the relevant props for rendering react route.
      */
-    _trim = ({ name, props, renderProps }) => ({
+    _trim = ({ name, props, renderProps }: AnyObject): AnyObject => ({
         name,
         props,
         renderProps,
     });
 
     /**
-     * Convert nested routes to list of react route renderable objects
-     * @param {Route} route to be flattened
-     * @param {string} base the base path
-     * @returns {[]} list of routes with relevant react route props
+     * Convert nested routes to list of react route renderable objects.
      */
-    _flatten = (route, base) => {
-        const routes = [];
+    _flatten = (route: Route, base: string): AnyObject[] => {
+        const routes: AnyObject[] = [];
         const pathSuffixes = Object.values(route.suffixes);
         const paths = pathSuffixes.length
             ? pathSuffixes.map(suffix => `${route.props.path || ""}${suffix}`)
@@ -229,7 +222,7 @@ export default class Route {
                                 ...nestedRenderProps,
                                 ...nestedRoute.renderProps,
                             },
-                        },
+                        } as Route,
                         fullPath,
                     ),
                 );
@@ -239,37 +232,38 @@ export default class Route {
     };
 
     /**
-     * Build and return all the react-router/Route components
-     * @param {string} base to append all routes to
-     * @returns {[ReactRoute]}
+     * Build and return all the react-router/Route components.
      */
-    render = (base = "") => {
+    render = (base: string = ""): ReactElement[] => {
         const routes = this._flatten(this, base);
         return routes.map(route => {
             const rProps = { ...route.props };
             const ReactComponent = route.props.component;
             const renderFn = route.props.render || route.props.children;
             if (Object.values(route.renderProps).length) {
-                rProps.render = props => {
+                rProps.render = (props: AnyObject) => {
                     const renderProps = { ...route.renderProps, ...props };
-                    return ReactComponent ? (
-                        <ReactComponent {...renderProps} />
-                    ) : (
-                        renderFn(renderProps)
-                    );
+                    return ReactComponent
+                        ? React.createElement(ReactComponent, renderProps)
+                        : renderFn(renderProps);
                 };
                 delete rProps.component;
             }
             if (rProps.render) delete rProps.children;
             if (rProps.component) delete rProps.render;
-            return <ReactRoute {...rProps} key={rProps.key || rProps.path} />;
+            return React.createElement(ReactRoute, {
+                ...rProps,
+                key: rProps.key || rProps.path,
+            });
         });
     };
 
-    _describe = (route, base) => {
+    _describe = (route: Route, base: string) => {
         const basePath = `${base || ""}${route.props.path || ""}`;
         const suffixNames = Object.keys(route.suffixes);
-        const nextDirections = suffixNames.length
+        const nextDirections: {
+            $?: string;
+        } & AnyObject = suffixNames.length
             ? suffixNames.reduce((directions, name) => {
                   const path = `${basePath}${route.suffixes[name]}`;
                   const nextRoute = {
@@ -294,8 +288,6 @@ export default class Route {
 
     /**
      * Generate easily accessible directions to all named paths
-     * @param {string} base to append all route paths to
-     * @returns {{}} object with named paths
      * @example
 ```js
 {
@@ -315,5 +307,7 @@ export default class Route {
 }
 ```
      */
-    describe = (base = "") => this._describe(this, base);
+    describe = (base: string = ""): {
+        $?: string;
+    } & AnyObject => this._describe(this, base);
 }

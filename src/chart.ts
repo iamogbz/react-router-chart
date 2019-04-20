@@ -3,9 +3,8 @@ import Route from "./route";
 export default class {
     /**
      * Create a route of the specified shape
-     * @param {*} shape the shape of the route
      */
-    static route(shape) {
+    static route(shape: Route) {
         return new Route(shape);
     }
 

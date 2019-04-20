@@ -1,8 +1,9 @@
 {
-    "parser": "babel-eslint",
+    "parser": "@typescript-eslint/parser",
     "extends": [
         "airbnb",
-        "prettier"
+        "prettier",
+        "plugin:@typescript-eslint/recommended"
     ],
     "env": {
         "browser": true,
@@ -11,6 +12,7 @@
         "es6": true
     },
     "plugins": [
+        "@typescript-eslint",
         "import",
         "jsx-a11y",
         "react",

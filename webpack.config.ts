@@ -1,5 +1,5 @@
-const path = require("path");
-const CopyPlugin = require("copy-webpack-plugin");
+import * as path from "path";
+import * as CopyPlugin from "copy-webpack-plugin";
 
 module.exports = {
     mode: "production",
@@ -13,17 +13,21 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.jsx?$/,
+                test: /\.tsx?$/,
                 exclude: /(node_modules|bower_components)/,
                 use: {
                     loader: "babel-loader",
                     options: {
-                        presets: ["@babel/preset-env"],
-                        plugins: ["babel-plugin-transform-class-properties"],
+                        plugins: ["@babel/plugin-proposal-class-properties"],
+                        presets: ["@babel/preset-typescript"],
                     },
                 },
             },
         ],
+    },
+    resolve: {
+        extensions: [".js", ".ts"],
+        modules: [path.resolve("./src"), path.resolve("./node_modules")],
     },
     devtool: "source-map",
 };
