@@ -62,7 +62,12 @@
     "lint-staged": {
         "linters": {
             "*.js": [
-                "eslint",
+                "eslint"
+            ],
+            "*.ts": [
+                "tslint"
+            ],
+            "*.{js,ts}": [
                 "jest --bail --findRelatedTests"
             ]
         },
@@ -81,7 +86,7 @@
             "./artifacts/",
             "./node_modules/"
         ],
-        "setupTestFrameworkScriptFile": "./config/setupTests.js",
+        "setupTestFrameworkScriptFile": "./config/setupTests.ts",
         "coverageDirectory": "./artifacts/coverage"
     },
     "peerDependencies": {
@@ -111,7 +116,6 @@
         "babel-core": "^7.0.0-bridge.0",
         "babel-eslint": "^10.0.1",
         "babel-loader": "^8.0.5",
-        "babel-plugin-transform-class-properties": "^6.24.1",
         "commitizen": "^3.0.7",
         "copy-webpack-plugin": "^5.0.2",
         "coveralls": "^3.0.3",
