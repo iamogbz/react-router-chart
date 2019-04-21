@@ -32,8 +32,9 @@
         "commit": "git-cz",
         "commitlint": "commitlint-travis",
         "test": "jest",
+        "test-watch": "jest --watch",
         "build": "webpack --mode=production",
-        "watch": "webpack --mode=development --watch",
+        "build-watch": "webpack --mode=development --watch",
         "release": "semantic-release"
     },
     "release": {
@@ -62,7 +63,12 @@
     "lint-staged": {
         "linters": {
             "*.js": [
-                "eslint",
+                "eslint"
+            ],
+            "*.ts": [
+                "tslint"
+            ],
+            "*.{js,ts}": [
                 "jest --bail --findRelatedTests"
             ]
         },
@@ -77,11 +83,19 @@
         }
     },
     "jest": {
+        "preset": "ts-jest",
+        "moduleDirectories": [
+            "./src",
+            "./tests",
+            "./node_modules"
+        ],
         "testPathIgnorePatterns": [
             "./artifacts/",
             "./node_modules/"
         ],
-        "setupTestFrameworkScriptFile": "./config/setupTests.js",
+        "setupFilesAfterEnv": [
+            "./config/setupTests.ts"
+        ],
         "coverageDirectory": "./artifacts/coverage"
     },
     "peerDependencies": {
@@ -91,22 +105,33 @@
     "devDependencies": {
         "@babel/cli": "^7.2.3",
         "@babel/core": "^7.3.4",
+        "@babel/plugin-proposal-class-properties": "^7.4.0",
         "@babel/preset-env": "^7.3.4",
         "@babel/preset-react": "^7.0.0",
+        "@babel/preset-typescript": "^7.3.3",
         "@commitlint/cli": "^7.5.2",
         "@commitlint/config-conventional": "^7.5.0",
         "@commitlint/travis-cli": "^7.5.2",
+        "@types/copy-webpack-plugin": "^4.4.3",
+        "@types/enzyme": "^3.9.1",
+        "@types/enzyme-adapter-react-16": "^1.0.5",
+        "@types/jest": "^24.0.9",
+        "@types/node": "^11.12.2",
+        "@types/react": "^16.8.14",
+        "@types/react-router": "^4.4.5",
+        "@types/webpack": "^4.4.25",
+        "@typescript-eslint/eslint-plugin": "^1.6.0",
+        "@typescript-eslint/parser": "^1.6.0",
         "acorn": "^6.1.1",
         "babel-core": "^7.0.0-bridge.0",
         "babel-eslint": "^10.0.1",
         "babel-loader": "^8.0.5",
-        "babel-plugin-transform-class-properties": "^6.24.1",
         "commitizen": "^3.0.7",
         "copy-webpack-plugin": "^5.0.2",
         "coveralls": "^3.0.3",
         "cz-conventional-changelog": "^2.1.0",
         "enzyme": "^3.9.0",
-        "enzyme-adapter-react-16": "^1.10.0",
+        "enzyme-adapter-react-16": "^1.12.1",
         "eslint": "^5.16.0",
         "eslint-config-airbnb": "^17.1.0",
         "eslint-config-prettier": "^4.1.0",
@@ -119,10 +144,14 @@
         "lint-staged": "^8.1.4",
         "prettier": "^1.16.4",
         "react": "^16.8.6",
-        "react-router": "^4.3.1",
         "react-dom": "^16.8.3",
+        "react-router": "^4.3.1",
         "rxjs": "^6.4.0",
-        "semantic-release": "^15.13.3",
+        "semantic-release": "^15.13.12",
+        "ts-jest": "^24.0.0",
+        "ts-node": "^8.0.2",
+        "tslint": "^5.16.0",
+        "typescript": "^3.3.3333",
         "webpack": "^4.29.6",
         "webpack-cli": "^3.2.3"
     }

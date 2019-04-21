@@ -1,11 +1,11 @@
-import Route from "./route";
+import { RouteShape } from "global";
+import { Route }  from "route";
 
-export default class {
+export class Chart {
     /**
      * Create a route of the specified shape
-     * @param {*} shape the shape of the route
      */
-    static route(shape) {
+    static route(shape: RouteShape) {
         return new Route(shape);
     }
 
@@ -13,7 +13,7 @@ export default class {
      * Render the react-router routes
      * @param {*} route the route to render
      */
-    static render(route) {
+    static render(route: Route) {
         return route.render();
     }
 }

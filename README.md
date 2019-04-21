@@ -21,7 +21,7 @@ Create a single source map of truth for all routes in your react app and easily 
     nest: {
         props: Object,       // same as parent props
         renderProps: Object, // same as parent renderProps
-        routes: [Route],     // list of nested Route objects or shapes
+        routes: Route[],     // list of nested Route objects or shapes
     }
 }
 ```
@@ -43,7 +43,7 @@ Supports multiple suffixes each with unique keys.
 ### Start Chart
 
 ```js
-import Chart from "react-router-chart";
+import { Chart } from "react-router-chart";
 ```
 
 #### `.route(shape)`
@@ -125,7 +125,7 @@ Optional base props passed to all children routes
 
 Optional extra properties passed to the render of all children routes
 
-#### `.setNestedRoutes([Route]) => route.nest.routes`
+#### `.setNestedRoutes(Route[]) => route.nest.routes`
 
 List of children routes, generates `react-router/Route` for each base \* suffixes
 

@@ -1,6 +1,8 @@
+import { RouteShape } from "global";
+
 const component = jest.fn();
 
-const routeShape = {
+export const routeShape: RouteShape = {
     name: "base",
     props: {
         component,
@@ -30,11 +32,6 @@ const routeShape = {
     },
 };
 
-const Route = () => ({
+export const Route = () => ({
     render: jest.fn(),
 });
-
-export default {
-    Route,
-    routeShape,
-};
