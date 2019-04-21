@@ -1,6 +1,6 @@
 import { Chart } from "chart";
 import * as route from "route";
-
+import { AnyObject } from "global";
 import * as mocks from "./mocks";
 
 describe("Chart", () => {

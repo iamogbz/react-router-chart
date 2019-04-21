@@ -1,6 +1,8 @@
+import { RouteShape } from "global";
+
 const component = jest.fn();
 
-export const routeShape = {
+export const routeShape: RouteShape = {
     name: "base",
     props: {
         component,
@@ -28,7 +30,7 @@ export const routeShape = {
             { props: { path: "/anonymous" } },
         ],
     },
-} as RouteShape;
+};
 
 export const Route = () => ({
     render: jest.fn(),

@@ -1,4 +1,4 @@
-import { RouteProps, RouteComponentProps } from "react-router";
+import * as ReactRouter from "react-router";
 
 export interface AnyObject {
     [key: string]: any;
@@ -8,15 +8,27 @@ export interface Suffixes {
     [name: string]: string;
 }
 
-export type ReactRouteProps = RouteProps & { key?: string };
+export type ReactRouterRouteProps = ReactRouter.RouteProps & { key?: string };
+
+export type ReactRouterRoutePropComponent =
+    | React.ComponentType<ReactRouter.RouteComponentProps<any>>
+    | React.ComponentType<any>;
+
+export type ReactRouterRoutePropRender = (
+    props: ReactRouter.RouteComponentProps<any>,
+) => React.ReactNode;
+
+export type ReactRouterRoutePropChildren =
+    | ReactRouterRoutePropRender
+    | React.ReactNode;
 
 export interface RouteShape {
     name?: string;
-    props?: ReactRouteProps;
+    props?: ReactRouterRouteProps;
     renderProps?: AnyObject;
     suffixes?: Suffixes;
     nest?: {
-        props?: ReactRouteProps;
+        props?: ReactRouterRouteProps;
         renderProps?: AnyObject;
         routes?: RouteShape[];
     };
@@ -24,7 +36,7 @@ export interface RouteShape {
 
 export interface RouteRenderProps {
     name: string;
-    props: ReactRouteProps;
+    props: ReactRouterRouteProps;
     renderProps: AnyObject;
 }
 

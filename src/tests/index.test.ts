@@ -1,4 +1,4 @@
-import { Chart } from "../index";
+import { Chart } from "index";
 
 describe("Index", () => {
     it("exports chart", () => {

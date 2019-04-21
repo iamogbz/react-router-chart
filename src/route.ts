@@ -1,23 +1,30 @@
 import * as React from "react";
 import { Route as ReactRoute } from "react-router";
+import { Location } from "history";
 import {
     AnyObject,
-    ReactRouteProps,
+    ReactRouterRoutePropChildren,
+    ReactRouterRoutePropComponent,
+    ReactRouterRoutePropRender,
+    ReactRouterRouteProps,
     RouteDirection,
-    RouteShape,
     RouteRenderProps,
+    RouteShape,
     Suffixes,
 } from "global";
 
 export class Route {
     _name: string;
-    props: ReactRouteProps;
+    props: ReactRouterRouteProps;
     renderProps: AnyObject;
     suffixes: Suffixes;
-    nest: { props: ReactRouteProps; renderProps: AnyObject; routes: Route[] };
+    nest: {
+        props: ReactRouterRouteProps;
+        renderProps: AnyObject;
+        routes: Route[];
+    };
     /**
      * Create a new Route object
-     * @param {{}} route shape
      */
     constructor({ name, props, renderProps, suffixes, nest }: RouteShape = {}) {
         this.name = name ? name.toString() : undefined;
@@ -48,25 +55,23 @@ export class Route {
     }
 
     /**
-     * Sets name of the route
-     * @param {string} name
-     * @returns {Route} reference to updated object
+     * Sets name of the route.
+     * Returns reference to updated object.
      */
     setName = (name: string): Route => Object.assign(this, { name });
 
     /**
-     * Sets react router route props
-     * @param {{}} props
-     * @returns {Route} reference to updated object
+     * Sets react router route props.
+     * Returns reference to updated object.
      */
-    setProps = (props: {}): Route => Object.assign(this, { props });
+    setProps = (props: ReactRouterRouteProps): Route =>
+        Object.assign(this, { props });
 
     /**
-     * Adds to react router route props
-     * @param {{}} props
-     * @returns {Route} reference to updated object
+     * Adds to react router route props.
+     * Returns reference to updated object.
      */
-    addProps = (props: {}): Route => {
+    addProps = (props: ReactRouterRouteProps): Route => {
         Object.assign(this.props, props);
         return this;
     };
@@ -79,16 +84,17 @@ export class Route {
 
     rStrict = (strict: boolean) => this.addProps({ strict });
 
-    rLocation = (location: string) => this.addProps({ location });
+    rLocation = (location: Location) => this.addProps({ location });
 
     rSensitive = (sensitive: boolean) => this.addProps({ sensitive });
 
-    rChildren = (children: any) => this.addProps({ children });
+    rChildren = (children: ReactRouterRoutePropChildren) =>
+        this.addProps({ children });
 
-    rComponent = (component: React.ReactElement) =>
+    rComponent = (component: ReactRouterRoutePropComponent) =>
         this.addProps({ component });
 
-    rRender = (render: Function) => this.addProps({ render });
+    rRender = (render: ReactRouterRoutePropRender) => this.addProps({ render });
 
     /**
      * Extra properties passed to the render of this route.
@@ -178,7 +184,12 @@ export class Route {
     /**
      * Check if route can be rendered using props
      */
-    _canRender = ({ path, children, component, render }: ReactRouteProps): boolean =>
+    _canRender = ({
+        path,
+        children,
+        component,
+        render,
+    }: ReactRouterRouteProps): boolean =>
         Boolean(path && (children || component || render));
 
     /**
