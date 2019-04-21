@@ -1,12 +1,20 @@
 import * as React from "react";
 import { Route as ReactRoute } from "react-router";
+import {
+    AnyObject,
+    ReactRouteProps,
+    RouteDirection,
+    RouteShape,
+    RouteRenderProps,
+    Suffixes,
+} from "global";
 
 export class Route {
     _name: string;
-    props: AnyObject;
+    props: ReactRouteProps;
     renderProps: AnyObject;
     suffixes: Suffixes;
-    nest: { props: AnyObject; renderProps: AnyObject; routes: Route[] };
+    nest: { props: ReactRouteProps; renderProps: AnyObject; routes: Route[] };
     /**
      * Create a new Route object
      * @param {{}} route shape
@@ -20,9 +28,7 @@ export class Route {
             ? {
                   props: { ...nest.props },
                   renderProps: { ...nest.renderProps },
-                  routes: (nest.routes || ([] as RouteShape[])).map(
-                      shape => new Route(shape),
-                  ),
+                  routes: (nest.routes || []).map(shape => new Route(shape)),
               }
             : { props: {}, renderProps: {}, routes: [] };
     }
@@ -79,7 +85,8 @@ export class Route {
 
     rChildren = (children: any) => this.addProps({ children });
 
-    rComponent = (component: React.ReactElement) => this.addProps({ component });
+    rComponent = (component: React.ReactElement) =>
+        this.addProps({ component });
 
     rRender = (render: Function) => this.addProps({ render });
 
@@ -114,13 +121,10 @@ export class Route {
         Object.assign(this, {
             suffixes: Object.keys(this.suffixes)
                 .filter(key => !names.includes(key))
-                .reduce(
-                    (obj, key) => {
-                        obj[key] = this.suffixes[key];
-                        return obj;
-                    },
-                    {} as AnyObject,
-                ),
+                .reduce((obj: AnyObject, key) => {
+                    obj[key] = this.suffixes[key];
+                    return obj;
+                }, {}),
         });
 
     /**
@@ -174,13 +178,13 @@ export class Route {
     /**
      * Check if route can be rendered using props
      */
-    _canRender = ({ path, children, component, render }: AnyObject): boolean =>
-        path && (children || component || render);
+    _canRender = ({ path, children, component, render }: ReactRouteProps): boolean =>
+        Boolean(path && (children || component || render));
 
     /**
      * Get only the relevant props for rendering react route.
      */
-    _trim = ({ name, props, renderProps }: AnyObject): AnyObject => ({
+    _trim = ({ name, props, renderProps }: RouteShape): RouteRenderProps => ({
         name,
         props,
         renderProps,
@@ -189,8 +193,8 @@ export class Route {
     /**
      * Convert nested routes to list of react route renderable objects.
      */
-    _flatten = (route: Route, base: string): AnyObject[] => {
-        const routes: AnyObject[] = [];
+    _flatten = (route: Route, base: string): RouteRenderProps[] => {
+        const routes: RouteRenderProps[] = [];
         const pathSuffixes = Object.values(route.suffixes);
         const paths = pathSuffixes.length
             ? pathSuffixes.map(suffix => `${route.props.path || ""}${suffix}`)
@@ -237,7 +241,7 @@ export class Route {
         return routes.map(route => {
             const rProps = { ...route.props };
             const ReactComponent = route.props.component;
-            const renderFn = route.props.render || route.props.children;
+            const renderFn: any = route.props.render || route.props.children;
             if (Object.values(route.renderProps).length) {
                 rProps.render = (props: AnyObject) => {
                     const renderProps = { ...route.renderProps, ...props };
@@ -251,17 +255,16 @@ export class Route {
             if (rProps.component) delete rProps.render;
             return React.createElement(ReactRoute, {
                 ...rProps,
-                key: rProps.key || rProps.path,
+                key: String(rProps.key || rProps.path),
             });
         });
     };
 
-    _describe = (route: Route, base: string) => {
+    _describe = (route: Route, base: string): RouteDirection => {
+        const empty: RouteDirection = { $: null };
         const basePath = `${base || ""}${route.props.path || ""}`;
         const suffixNames = Object.keys(route.suffixes);
-        const nextDirections: {
-            $?: string;
-        } & AnyObject = suffixNames.length
+        const nextDirections: RouteDirection = suffixNames.length
             ? suffixNames.reduce((directions, name) => {
                   const path = `${basePath}${route.suffixes[name]}`;
                   const nextRoute = {
@@ -273,14 +276,14 @@ export class Route {
                   return Object.assign(directions, {
                       [name]: this._describe(nextRoute, path),
                   });
-              }, {})
+              }, empty)
             : route.nest.routes.reduce((directions, nextRoute) => {
                   const nested = this._describe(nextRoute, basePath);
                   return Object.assign(
                       directions,
                       nextRoute.name ? { [nextRoute.name]: nested } : nested,
                   );
-              }, {});
+              }, empty);
         return Object.assign(nextDirections, { $: basePath });
     };
 
@@ -305,7 +308,6 @@ export class Route {
 }
 ```
      */
-    describe = (base: string = ""): {
-        $?: string;
-    } & AnyObject => this._describe(this, base);
+    describe = (base: string = ""): RouteDirection =>
+        this._describe(this, base);
 }
