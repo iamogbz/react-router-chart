@@ -1,22 +1,23 @@
-import Chart from "../chart";
-import Route from "../route";
+import { Chart } from "chart";
+import * as route from "route";
 
-import mocks from "./mocks";
-
-jest.mock("../route");
+import * as mocks from "./mocks";
 
 describe("Chart", () => {
-    beforeEach(() => Route.mockClear());
+    beforeEach(jest.clearAllMocks);
+    afterAll(jest.restoreAllMocks);
 
     it("should create new Route", () => {
-        Chart.route(mocks.routeShape);
-        expect(Route).toBeCalledWith(mocks.routeShape);
+        expect(Chart.route(mocks.routeShape)).toBeInstanceOf(route.Route);
     });
 
     it("should call route render", () => {
-        Route.mockImplementation(mocks.Route);
-        const route = Chart.route(mocks.routeShape);
-        Chart.render(route);
-        expect(route.render).toBeCalled();
+        const RouteSpy = jest
+            .spyOn(route as AnyObject, "Route")
+            .mockImplementation(mocks.Route);
+        const newRoute = Chart.route(mocks.routeShape);
+        Chart.render(newRoute);
+        expect(newRoute.render).toBeCalled();
+        RouteSpy.mockRestore();
     });
 });

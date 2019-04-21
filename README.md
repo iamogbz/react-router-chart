@@ -43,7 +43,7 @@ Supports multiple suffixes each with unique keys.
 ### Start Chart
 
 ```js
-import Chart from "react-router-chart";
+import { Chart } from "react-router-chart";
 ```
 
 #### `.route(shape)`

@@ -1,9 +1,9 @@
-import chart from "../index";
+import { Chart } from "../index";
 
 describe("Index", () => {
-    it("exports chart as default", () => {
-        expect(chart).toBeDefined();
-        expect(typeof chart.route).toBe("function");
-        expect(typeof chart.render).toBe("function");
+    it("exports chart", () => {
+        expect(Chart).toBeDefined();
+        expect(typeof Chart.route).toBe("function");
+        expect(typeof Chart.render).toBe("function");
     });
 });

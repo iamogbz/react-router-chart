@@ -1,7 +1,7 @@
-import React, { ReactElement } from "react";
+import * as React from "react";
 import { Route as ReactRoute } from "react-router";
 
-export default class Route {
+export class Route {
     _name: string;
     props: AnyObject;
     renderProps: AnyObject;
@@ -81,7 +81,7 @@ export default class Route {
 
     rChildren = (children: any) => this.addProps({ children });
 
-    rComponent = (component: ReactElement) => this.addProps({ component });
+    rComponent = (component: React.ReactElement) => this.addProps({ component });
 
     rRender = (render: Function) => this.addProps({ render });
 
@@ -234,7 +234,7 @@ export default class Route {
     /**
      * Build and return all the react-router/Route components.
      */
-    render = (base: string = ""): ReactElement[] => {
+    render = (base: string = ""): React.ReactElement[] => {
         const routes = this._flatten(this, base);
         return routes.map(route => {
             const rProps = { ...route.props };

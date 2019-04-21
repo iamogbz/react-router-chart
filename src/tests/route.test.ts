@@ -1,8 +1,8 @@
 import { shallow } from "enzyme";
 
-import Route from "../route";
+import { Route } from "../route";
 
-import mocks from "./mocks";
+import * as mocks from "./mocks";
 
 const NOOP = () => {};
 
