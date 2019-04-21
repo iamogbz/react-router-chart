@@ -277,8 +277,6 @@ Equivalent to
 </Switch>
 ```
 
-Can be used in snapshots to verify generated routes.
-
 Get directions to all named routes
 
 ```js
@@ -294,3 +292,5 @@ paths.example.$;        // "/mybase/example/:id"
 paths.demo.aChild.$;    // "/mybase/demo/:id/iam/a/child"
 paths.example.aChild.$; // "/mybase/example/:id/iam/a/child"
 ```
+
+Can be used in snapshots to verify generated routes.
