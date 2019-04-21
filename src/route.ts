@@ -39,8 +39,6 @@ export class Route {
      */
     set name(value: string) {
         this._name = value;
-        if (value && typeof value !== "string")
-            console.warn(`Route name was set to non string value '${value}'`);
     }
 
     /**
