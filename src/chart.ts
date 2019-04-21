@@ -1,4 +1,5 @@
-import { Route }  from "./route";
+import { RouteShape } from "global";
+import { Route }  from "route";
 
 export class Chart {
     /**

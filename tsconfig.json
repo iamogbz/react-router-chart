@@ -3,7 +3,6 @@
         "baseUrl": "./src",
         "declaration": true,
         "outDir": "./built",
-        "paths": { "*": ["*", "./@types/*"] },
         "target": "es6",
         "allowSyntheticDefaultImports": true,
         "noImplicitReturns": true,
