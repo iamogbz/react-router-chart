@@ -12,10 +12,18 @@ Create a single source map of truth for all routes in your react app and easily 
 
 ### Install
 
-Include in your dev? dependencies.
+Include in your dependencies.
 
 ```sh
 npm install 'react-router-chart'
+```
+
+#### Recommended
+
+Use [`react-loadable`](https://github.com/jamiebuilds/react-loadable) to separate component logic from route mapping, by deferring the load of the component to the time of render.
+
+```sh
+npm install 'react-loadable'
 ```
 
 ## API Reference
