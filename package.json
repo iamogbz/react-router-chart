@@ -138,7 +138,7 @@
         "react-dom": "^16.8.3",
         "react-router": "^4.3.1",
         "rxjs": "^6.4.0",
-        "semantic-release": "^15.13.12",
+        "semantic-release": "^15.13.24",
         "ts-jest": "^24.0.0",
         "ts-node": "^8.0.2",
         "tslint": "^5.16.0",
