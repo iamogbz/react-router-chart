@@ -24,10 +24,6 @@
         "graph",
         "cartographer"
     ],
-    "engines": {
-        "node": ">=10.4.0",
-        "npm": ">=6.1.0"
-    },
     "scripts": {
         "commit": "git-cz",
         "commitlint": "commitlint-travis",
