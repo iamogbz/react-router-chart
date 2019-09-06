@@ -112,7 +112,7 @@
         "@types/react": "^16.8.14",
         "@types/react-router": "^5.0.0",
         "@types/webpack": "^4.4.25",
-        "@typescript-eslint/eslint-plugin": "^1.10.2",
+        "@typescript-eslint/eslint-plugin": "^2.0.0",
         "@typescript-eslint/parser": "^1.10.2",
         "acorn": "^7.0.0",
         "babel-eslint": "^10.0.1",
