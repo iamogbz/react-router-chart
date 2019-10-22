@@ -120,7 +120,7 @@
         "commitizen": "^4.0.3",
         "copy-webpack-plugin": "^5.0.4",
         "coveralls": "^3.0.3",
-        "cz-conventional-changelog": "^3.0.1",
+        "cz-conventional-changelog": "^3.0.2",
         "enzyme": "^3.9.0",
         "enzyme-adapter-react-16": "^1.12.1",
         "eslint": "^6.0.0",
