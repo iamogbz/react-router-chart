@@ -5,8 +5,8 @@ Create a single source map of truth for all routes in your react app and easily 
 [![NPM Version](https://img.shields.io/npm/v/react-router-chart.svg)](https://www.npmjs.com/package/react-router-chart)
 [![Build Status](https://travis-ci.org/iamogbz/react-router-chart.svg?branch=master)](https://travis-ci.org/iamogbz/react-router-chart?branch=master)
 [![Coverage Status](https://coveralls.io/repos/github/iamogbz/react-router-chart/badge.svg?branch=master&cache=0)](https://coveralls.io/github/iamogbz/react-router-chart?branch=master)
-[![Dependencies](https://david-dm.org/iamogbz/react-router-chart.svg)](https://www.npmjs.com/package/react-router-chart?activeTab=dependencies)
-[![Greenkeeper badge](https://badges.greenkeeper.io/iamogbz/react-router-chart.svg)](https://greenkeeper.io/)
+[![Dependencies](https://david-dm.org/iamogbz/react-router-chart/status.svg)](https://www.npmjs.com/package/react-router-chart?activeTab=dependencies)
+[![Dependabot badge](https://badgen.net/dependabot/iamogbz/react-router-chart/?icon=dependabot)](https://app.dependabot.com)
 
 ## Getting Started
 
