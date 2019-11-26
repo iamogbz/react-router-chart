@@ -144,6 +144,6 @@
         "tslint": "^5.16.0",
         "typescript": "^3.3.3333",
         "webpack": "^4.41.2",
-        "webpack-cli": "^3.2.3"
+        "webpack-cli": "^3.3.10"
     }
 }
