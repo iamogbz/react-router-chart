@@ -111,7 +111,7 @@
         "@types/node": "^13.7.0",
         "@types/react": "^16.9.19",
         "@types/react-router": "^5.1.4",
-        "@types/webpack": "^4.41.3",
+        "@types/webpack": "^4.41.4",
         "@typescript-eslint/eslint-plugin": "^2.18.0",
         "@typescript-eslint/parser": "^2.18.0",
         "acorn": "^7.1.0",
