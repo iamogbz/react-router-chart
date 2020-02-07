@@ -1,10 +1,6 @@
 {
     "parser": "@typescript-eslint/parser",
-    "extends": [
-        "airbnb",
-        "prettier",
-        "plugin:@typescript-eslint/recommended"
-    ],
+    "extends": ["airbnb", "prettier", "plugin:@typescript-eslint/recommended"],
     "env": {
         "browser": true,
         "node": true,
@@ -35,33 +31,54 @@
         "no-console": 1,
         "no-param-reassign": ["error", { "props": false }],
         "no-trailing-spaces": 2,
-        "no-use-before-define": [2, {
-            "functions": false
-        }],
+        "no-underscore-dangle": [2, { "allowAfterThis": true }],
+        "no-use-before-define": [
+            2,
+            {
+                "functions": false
+            }
+        ],
         "import/prefer-default-export": 0,
-        "object-curly-newline": [2, {
-            "multiline": true,
-            "consistent": true
-        }],
-        "object-property-newline": [2, {
-            "allowAllPropertiesOnSameLine": true
-        }],
+        "object-curly-newline": [
+            2,
+            {
+                "multiline": true,
+                "consistent": true
+            }
+        ],
+        "object-property-newline": [
+            2,
+            {
+                "allowAllPropertiesOnSameLine": true
+            }
+        ],
         "react/jsx-first-prop-new-line": [2, "multiline"],
         "react/jsx-indent": [2, 4],
         "react/jsx-indent-props": [2, 4],
-        "prettier/prettier": [2, {
-            "bracketSpacing": true,
-            "jsxBracketSameLine": false,
-            "semi": true,
-            "singleQuote": false,
-            "tabWidth": 4,
-            "trailingComma": "all"
-        }]
+        "prettier/prettier": [
+            2,
+            {
+                "bracketSpacing": true,
+                "jsxBracketSameLine": false,
+                "semi": true,
+                "singleQuote": false,
+                "tabWidth": 4,
+                "trailingComma": "all"
+            }
+        ]
     },
     "settings": {
+        "import/extensions": [".ts", ".tsx", ".d.ts"],
+        "import/parsers": {
+            "@typescript-eslint/parser": [".ts", ".tsx", ".d.ts"]
+        },
         "import/resolver": {
+            "typescript": {
+                "alwaysTryTypes": true
+            },
             "node": {
-                "paths": ["src"]
+                "paths": ["src"],
+                "extensions": [".ts", ".tsx", ".d.ts"]
             }
         }
     }

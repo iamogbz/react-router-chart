@@ -27,6 +27,7 @@
     "scripts": {
         "commit": "git-cz",
         "commitlint": "commitlint-travis",
+        "lint": "eslint ./src/**",
         "test": "jest",
         "test-watch": "jest --watch",
         "build": "webpack --mode=production",
@@ -90,6 +91,7 @@
         "coverageDirectory": "./artifacts/coverage"
     },
     "peerDependencies": {
+        "history": "^4.0.0",
         "react": "^16.0.0",
         "react-router": "^4.0.0||^5.0.0"
     },
@@ -126,6 +128,7 @@
         "eslint": "^6.8.0",
         "eslint-config-airbnb": "^18.0.1",
         "eslint-config-prettier": "^6.10.0",
+        "eslint-import-resolver-typescript": "^2.0.0",
         "eslint-plugin-import": "^2.20.1",
         "eslint-plugin-jsx-a11y": "^6.2.3",
         "eslint-plugin-prettier": "^3.1.2",

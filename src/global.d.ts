@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as ReactRouter from "react-router";
 
 export interface AnyObject {

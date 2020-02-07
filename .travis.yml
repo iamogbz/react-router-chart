@@ -6,6 +6,8 @@ jobs:
     - stage: lint, test and build
       name: commitlint
       script: npm run commitlint
+    - name: lint
+      script: npm run lint
     - name: test
       script: jest --coverage --coverageReporters=text-lcov | coveralls
     - name: build

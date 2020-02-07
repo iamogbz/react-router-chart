@@ -1,9 +1,10 @@
 import { shallow } from "enzyme";
-import { AnyObject, RouteShape } from "global";
 import { Route } from "route";
+import { AnyObject, RouteShape } from "global";
 import * as mocks from "./mocks";
 
-const NOOP = () => {};
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+const NOOP = (): void => {};
 
 describe("Route", () => {
     let route: Route & AnyObject;
@@ -15,7 +16,7 @@ describe("Route", () => {
     describe("initialization", () => {
         it("should use string value of name", () => {
             const mockName = "mockName";
-            const name = { toString: () => mockName };
+            const name = { toString: (): string => mockName };
             route = new Route({ name } as RouteShape);
             expect(route.name).toEqual(mockName);
         });
@@ -157,7 +158,7 @@ describe("Route", () => {
             path: "/mock-path",
         };
         const mockRenderProps = { mockRenderProp: "mock-render-value" };
-        const newMockRoute = (props = {}, renderProps = {}) =>
+        const newMockRoute = (props = {}, renderProps = {}): Route =>
             new Route({
                 props: { ...mockProps, ...props },
                 renderProps,
@@ -222,7 +223,9 @@ describe("Route", () => {
         });
     });
 
-    describe("describe", () =>
-        it("should match snapshot", () =>
-            expect(route.describe()).toMatchSnapshot()));
+    describe("describe", () => {
+        it("should match snapshot", () => {
+            expect(route.describe()).toMatchSnapshot();
+        });
+    });
 });

@@ -15,14 +15,20 @@ import {
 
 export class Route {
     _name: string;
+
+    // eslint-disable-next-line react/static-property-placement
     props: ReactRouterRouteProps;
+
     renderProps: AnyObject;
+
     suffixes: Suffixes;
+
     nest: {
         props: ReactRouterRouteProps;
         renderProps: AnyObject;
         routes: Route[];
     };
+
     /**
      * Create a new Route object
      */
@@ -76,25 +82,26 @@ export class Route {
         return this;
     };
 
-    rPath = (path: string) => this.addProps({ path });
+    rPath = (path: string): Route => this.addProps({ path });
 
-    rKey = (key: string) => this.addProps({ key });
+    rKey = (key: string): Route => this.addProps({ key });
 
-    rExact = (exact: boolean) => this.addProps({ exact });
+    rExact = (exact: boolean): Route => this.addProps({ exact });
 
-    rStrict = (strict: boolean) => this.addProps({ strict });
+    rStrict = (strict: boolean): Route => this.addProps({ strict });
 
-    rLocation = (location: Location) => this.addProps({ location });
+    rLocation = (location: Location): Route => this.addProps({ location });
 
-    rSensitive = (sensitive: boolean) => this.addProps({ sensitive });
+    rSensitive = (sensitive: boolean): Route => this.addProps({ sensitive });
 
-    rChildren = (children: ReactRouterRoutePropChildren) =>
+    rChildren = (children: ReactRouterRoutePropChildren): Route =>
         this.addProps({ children });
 
-    rComponent = (component: ReactRouterRoutePropComponent) =>
+    rComponent = (component: ReactRouterRoutePropComponent): Route =>
         this.addProps({ component });
 
-    rRender = (render: ReactRouterRoutePropRender) => this.addProps({ render });
+    rRender = (render: ReactRouterRoutePropRender): Route =>
+        this.addProps({ render });
 
     /**
      * Extra properties passed to the render of this route.
@@ -247,14 +254,15 @@ export class Route {
     /**
      * Build and return all the react-router/Route components.
      */
-    render = (base: string = ""): React.ReactElement[] => {
+    render = (base = ""): React.ReactElement[] => {
         const routes = this._flatten(this, base);
         return routes.map(route => {
             const rProps = { ...route.props };
             const ReactComponent = route.props.component;
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             const renderFn: any = route.props.render || route.props.children;
             if (Object.values(route.renderProps).length) {
-                rProps.render = (props: AnyObject) => {
+                rProps.render = (props: AnyObject): React.ReactElement => {
                     const renderProps = { ...route.renderProps, ...props };
                     return ReactComponent
                         ? React.createElement(ReactComponent, renderProps)
@@ -319,6 +327,5 @@ export class Route {
 }
 ```
      */
-    describe = (base: string = ""): RouteDirection =>
-        this._describe(this, base);
+    describe = (base = ""): RouteDirection => this._describe(this, base);
 }
