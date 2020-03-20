@@ -137,7 +137,7 @@
         "jest": "^25.1.0",
         "lint-staged": "^10.0.8",
         "prettier": "^1.19.1",
-        "react": "^16.13.0",
+        "react": "^16.13.1",
         "react-dom": "^16.13.0",
         "react-router": "^5.1.2",
         "rxjs": "^6.5.4",
