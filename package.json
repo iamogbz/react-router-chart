@@ -138,7 +138,7 @@
         "lint-staged": "^10.0.9",
         "prettier": "^1.19.1",
         "react": "^16.13.1",
-        "react-dom": "^16.13.0",
+        "react-dom": "^16.13.1",
         "react-router": "^5.1.2",
         "rxjs": "^6.5.4",
         "semantic-release": "^17.0.4",
