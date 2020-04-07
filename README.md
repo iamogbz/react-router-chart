@@ -7,6 +7,7 @@ Create a single source map of truth for all routes in your react app and easily 
 [![Coverage Status](https://coveralls.io/repos/github/iamogbz/react-router-chart/badge.svg?branch=master&cache=0)](https://coveralls.io/github/iamogbz/react-router-chart?branch=master)
 [![Dependencies](https://david-dm.org/iamogbz/react-router-chart/status.svg)](https://www.npmjs.com/package/react-router-chart?activeTab=dependencies)
 [![Dependabot badge](https://badgen.net/dependabot/iamogbz/react-router-chart/?icon=dependabot)](https://app.dependabot.com)
+[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/iamogbz/react-router-chart)
 
 ## Getting Started
 
