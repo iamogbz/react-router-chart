@@ -139,7 +139,7 @@
         "prettier": "^1.19.1",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
-        "react-router": "^5.1.2",
+        "react-router": "^5.2.0",
         "rxjs": "^6.5.5",
         "semantic-release": "^17.0.7",
         "ts-jest": "^25.5.1",
