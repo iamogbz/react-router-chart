@@ -1,4 +1,5 @@
 import * as path from "path";
+// eslint-disable-next-line import/no-extraneous-dependencies
 import * as CopyPlugin from "copy-webpack-plugin";
 
 module.exports = {
