@@ -1,4 +1,5 @@
 import * as path from "path";
+// eslint-disable-next-line import/no-extraneous-dependencies
 import * as CopyPlugin from "copy-webpack-plugin";
 
 module.exports = {
@@ -9,7 +10,7 @@ module.exports = {
         path: path.resolve(__dirname, "lib"),
         libraryTarget: "commonjs-module",
     },
-    plugins: [new CopyPlugin(["package.json"])],
+    plugins: [new CopyPlugin({ patterns: ["package.json"] })],
     module: {
         rules: [
             {
