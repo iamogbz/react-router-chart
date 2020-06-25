@@ -104,7 +104,7 @@
         "@babel/preset-typescript": "^7.10.1",
         "@babel/runtime": "^7.10.3",
         "@commitlint/cli": "^9.0.1",
-        "@commitlint/config-conventional": "^8.3.4",
+        "@commitlint/config-conventional": "^9.0.1",
         "@commitlint/travis-cli": "^9.0.1",
         "@types/copy-webpack-plugin": "^6.0.0",
         "@types/enzyme": "^3.10.5",
