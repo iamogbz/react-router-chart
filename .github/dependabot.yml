@@ -1,0 +1,13 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "10:00"
+  versioning-strategy: increase
+  ignore:
+  - dependency-name: prettier
+    versions:
+    - ">= 2.0.a"
+    - "< 2.1"
