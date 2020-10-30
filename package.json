@@ -142,7 +142,7 @@
         "react-dom": "^16.14.0",
         "react-router": "^5.2.0",
         "rxjs": "^6.6.3",
-        "semantic-release": "^17.2.1",
+        "semantic-release": "^17.2.2",
         "ts-jest": "^25.5.1",
         "ts-node": "^9.0.0",
         "tslint": "^6.1.3",
