@@ -41,7 +41,7 @@ export class Route {
             ? {
                   props: { ...nest.props },
                   renderProps: { ...nest.renderProps },
-                  routes: (nest.routes || []).map(shape => new Route(shape)),
+                  routes: (nest.routes || []).map((shape) => new Route(shape)),
               }
             : { props: {}, renderProps: {}, routes: [] };
     }
@@ -133,7 +133,7 @@ export class Route {
     removeSuffixes = (...names: string[]): Route =>
         Object.assign(this, {
             suffixes: Object.keys(this.suffixes)
-                .filter(key => !names.includes(key))
+                .filter((key) => !names.includes(key))
                 .reduce((obj: AnyObject, key) => {
                     obj[key] = this.suffixes[key];
                     return obj;
@@ -183,7 +183,7 @@ export class Route {
         Object.assign(this, {
             nest: Object.assign(this.nest, {
                 routes: this.nest.routes.filter(
-                    route => !names.includes(route.name),
+                    (route) => !names.includes(route.name),
                 ),
             }),
         });
@@ -215,21 +215,21 @@ export class Route {
         const routes: RouteRenderProps[] = [];
         const pathSuffixes = Object.values(route.suffixes);
         const paths = pathSuffixes.length
-            ? pathSuffixes.map(suffix => `${route.props.path || ""}${suffix}`)
+            ? pathSuffixes.map((suffix) => `${route.props.path || ""}${suffix}`)
             : [route.props.path];
         const {
             props: nestedProps,
             renderProps: nestedRenderProps,
             routes: nestedRoutes,
         } = route.nest;
-        paths.forEach(path => {
+        paths.forEach((path) => {
             const fullPath = `${base}${path || ""}`;
             const props = { ...route.props, path };
             if (this._canRender(props)) {
                 props.path = fullPath;
                 routes.push(this._trim({ ...route, props }));
             }
-            nestedRoutes.forEach(nestedRoute => {
+            nestedRoutes.forEach((nestedRoute) => {
                 routes.push(
                     ...this._flatten(
                         {
@@ -256,7 +256,7 @@ export class Route {
      */
     render = (base = ""): React.ReactElement[] => {
         const routes = this._flatten(this, base);
-        return routes.map(route => {
+        return routes.map((route) => {
             const rProps = { ...route.props };
             const ReactComponent = route.props.component;
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
