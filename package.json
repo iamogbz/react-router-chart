@@ -3,7 +3,7 @@
     "version": "0.0.0",
     "description": "Static route mapping for React Router",
     "author": "iamogbz",
-    "license": "GPL-3.0",
+    "license": "Unlicense",
     "main": "./main.js",
     "homepage": "https://github.com/iamogbz/react-router-chart#readme",
     "repository": {
