@@ -29,6 +29,7 @@
         "commitlint": "commitlint-travis",
         "lint": "eslint ./src/**",
         "test": "jest",
+        "test-ci": "jest --coverage --coverageReporters=text-lcov | coveralls",
         "test-watch": "jest --watch",
         "build": "webpack --mode=production",
         "build-watch": "webpack --mode=development --watch",
