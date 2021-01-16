@@ -1,22 +1,21 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as ReactRouter from "react-router";
 
 export interface AnyObject {
-    [key: string]: any;
+    [key: string]: unknown;
 }
 
 export interface Suffixes {
     [name: string]: string;
 }
 
-export type ReactRouterRouteProps = ReactRouter.RouteProps & { key?: string };
+export type ReactRouterRouteProps = ReactRouter.RouteProps & AnyObject;
 
 export type ReactRouterRoutePropComponent =
-    | React.ComponentType<ReactRouter.RouteComponentProps<any>>
-    | React.ComponentType<any>;
+    | React.ComponentType<ReactRouter.RouteComponentProps<unknown>>
+    | React.ComponentType<unknown>;
 
 export type ReactRouterRoutePropRender = (
-    props: ReactRouter.RouteComponentProps<any>,
+    props: ReactRouter.RouteComponentProps<unknown>,
 ) => React.ReactNode;
 
 export type ReactRouterRoutePropChildren =
