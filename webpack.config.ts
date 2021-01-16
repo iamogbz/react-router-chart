@@ -1,4 +1,5 @@
 import * as path from "path";
+import * as nodeExternals from "webpack-node-externals";
 
 module.exports = {
     mode: "production",
@@ -27,8 +28,9 @@ module.exports = {
         ],
     },
     resolve: {
-        extensions: [".js", ".ts"],
+        extensions: [".js", ".ts", ".tsx"],
         modules: [path.resolve("./src"), path.resolve("./node_modules")],
     },
+    externals: [nodeExternals()],
     devtool: "source-map",
 };
