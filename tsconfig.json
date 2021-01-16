@@ -1,14 +1,18 @@
 {
     "compilerOptions": {
+        "allowSyntheticDefaultImports": true,
         "baseUrl": "./src",
         "declaration": true,
-        "outDir": "./built",
-        "target": "es6",
-        "allowSyntheticDefaultImports": true,
-        "noImplicitReturns": true,
+        "jsx": "react",
+        "moduleResolution": "Node",
         "noFallthroughCasesInSwitch": true,
         "noImplicitAny": true,
-        "jsx": "react"
+        "noImplicitReturns": true,
+        "outDir": "./built",
+        "target": "es6"
     },
-    "exclude": ["lib", "node_modules"]
+    "exclude": [
+        "lib",
+        "node_modules"
+    ]
 }

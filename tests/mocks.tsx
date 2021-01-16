@@ -1,7 +1,10 @@
+import * as React from "react";
 import { RouteShape } from "global";
 import { Route } from "route";
 
-const component = jest.fn();
+const component = jest.fn(() =>
+    React.createElement("div", { id: "test-element" }),
+);
 
 export const routeShape: RouteShape = {
     name: "base",
@@ -33,8 +36,7 @@ export const routeShape: RouteShape = {
     },
 };
 
-const MockRoute = (): Partial<Route> => ({
-    render: jest.fn(),
-});
+const MockRoute = (): Route =>
+    (({ render: jest.fn() } as Partial<Route>) as Route);
 
 export { MockRoute as Route };

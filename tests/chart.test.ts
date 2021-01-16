@@ -1,6 +1,5 @@
 import { Chart } from "chart";
 import * as route from "route";
-import { AnyObject } from "global";
 import * as mocks from "./mocks";
 
 describe("Chart", () => {
@@ -13,7 +12,7 @@ describe("Chart", () => {
 
     it("should call route render", () => {
         const RouteSpy = jest
-            .spyOn(route as AnyObject, "Route")
+            .spyOn(route, "Route")
             .mockImplementation(mocks.Route);
         const newRoute = Chart.route(mocks.routeShape);
         Chart.render(newRoute);

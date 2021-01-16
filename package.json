@@ -4,7 +4,10 @@
     "description": "Static route mapping for React Router",
     "author": "iamogbz",
     "license": "Unlicense",
-    "main": "./main.js",
+    "main": "lib/main.js",
+    "files": [
+        "lib"
+    ],
     "homepage": "https://github.com/iamogbz/react-router-chart#readme",
     "repository": {
         "type": "git",
@@ -40,12 +43,7 @@
             "@semantic-release/commit-analyzer",
             "@semantic-release/release-notes-generator",
             "@semantic-release/github",
-            [
-                "@semantic-release/npm",
-                {
-                    "pkgRoot": "./lib"
-                }
-            ]
+            "@semantic-release/npm"
         ]
     },
     "commitlint": {
@@ -102,13 +100,12 @@
         "@commitlint/cli": "^11.0.0",
         "@commitlint/config-conventional": "^11.0.0",
         "@commitlint/travis-cli": "^11.0.0",
-        "@types/copy-webpack-plugin": "^6.4.0",
-        "@types/enzyme": "^3.10.8",
-        "@types/enzyme-adapter-react-16": "^1.0.6",
+        "@testing-library/react": "^11.2.1",
         "@types/jest": "^26.0.20",
         "@types/node": "^14.14.21",
         "@types/react": "^17.0.0",
         "@types/react-router": "^5.1.11",
+        "@types/react-router-dom": "^5.1.7",
         "@types/webpack": "^4.41.26",
         "@typescript-eslint/eslint-plugin": "^4.13.0",
         "@typescript-eslint/parser": "^4.13.0",
@@ -116,11 +113,8 @@
         "babel-eslint": "^10.1.0",
         "babel-loader": "^8.2.2",
         "commitizen": "^4.2.2",
-        "copy-webpack-plugin": "^7.0.0",
         "coveralls": "^3.1.0",
         "cz-conventional-changelog": "^3.3.0",
-        "enzyme": "^3.11.0",
-        "enzyme-adapter-react-16": "^1.15.5",
         "eslint": "^7.17.0",
         "eslint-config-prettier": "^7.1.0",
         "eslint-import-resolver-typescript": "^2.3.0",
@@ -136,6 +130,7 @@
         "react": "^16.14.0",
         "react-dom": "^17.0.1",
         "react-router": "^5.2.0",
+        "react-router-dom": "^5.2.0",
         "rxjs": "^6.6.3",
         "semantic-release": "^17.3.2",
         "ts-jest": "^26.4.4",

@@ -1,13 +1,12 @@
-import { shallow } from "enzyme";
+import { render } from "@testing-library/react";
 import { Route } from "route";
-import { AnyObject, RouteShape } from "global";
+import { RouteShape } from "global";
 import * as mocks from "./mocks";
 
-// eslint-disable-next-line @typescript-eslint/no-empty-function
-const NOOP = (): void => {};
+const NOOP = (): null => null;
 
 describe("Route", () => {
-    let route: Route & AnyObject;
+    let route: Route;
 
     beforeEach(() => {
         route = new Route(mocks.routeShape);
@@ -65,6 +64,7 @@ describe("Route", () => {
                 strict: true,
             }).forEach(([key, value]) => {
                 const method = `r${key[0].toUpperCase()}${key.substring(1)}`;
+                // @ts-expect-error using string to access properties
                 route[method](value);
                 expect(addPropsSpy).toBeCalledWith({ [key]: value });
                 addPropsSpy.mockReset();
@@ -131,7 +131,9 @@ describe("Route", () => {
         it("should assign nest routes and return route", () => {
             route.nest.routes = [];
             const mockNestedRoutes = mocks.routeShape.nest.routes;
-            const mockRoutes = mockNestedRoutes.map(shape => new Route(shape));
+            const mockRoutes = mockNestedRoutes.map(
+                (shape) => new Route(shape),
+            );
             expect(route.setNestedRoutes(mockRoutes)).toBe(route);
             expect(route.nest.routes).toEqual(mockRoutes);
         });
@@ -173,7 +175,7 @@ describe("Route", () => {
             const mockRoute = newMockRoute({ component }, mockRenderProps);
             const reactRoute = mockRoute.render().pop();
             expect(reactRoute.props.component).toBeUndefined();
-            shallow(reactRoute.props.render());
+            render(reactRoute.props.render());
             expect(component).toBeCalledWith(mockRenderProps, {});
         });
 

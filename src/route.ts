@@ -262,7 +262,7 @@ export class Route {
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             const renderFn: any = route.props.render || route.props.children;
             if (Object.values(route.renderProps).length) {
-                rProps.render = (props: AnyObject): React.ReactElement => {
+                rProps.render = (props) => {
                     const renderProps = { ...route.renderProps, ...props };
                     return ReactComponent
                         ? React.createElement(ReactComponent, renderProps)
