@@ -1,4 +1,5 @@
-artifacts
-node_modules
-lib
-built
+artifacts/
+node_modules/
+lib/
+built/
+*.tgz
