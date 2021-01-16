@@ -21,11 +21,9 @@ npm install 'react-router-chart'
 
 #### Recommended
 
-Use [`react-loadable`](https://github.com/jamiebuilds/react-loadable) to separate component logic from route mapping, by deferring the load of the component to the time of render.
+Use `React.lazy` and `React.Suspense` to separate component logic from route mapping, by deferring the load of the component to the time of render.
 
-```sh
-npm install 'react-loadable'
-```
+[See more](https://reactjs.org/docs/code-splitting.html#reactlazy)
 
 ## API Reference
 
