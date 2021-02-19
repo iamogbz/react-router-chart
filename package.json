@@ -90,7 +90,7 @@
         "react-router": ">=4.0.0"
     },
     "devDependencies": {
-        "@babel/cli": "^7.12.16",
+        "@babel/cli": "^7.12.17",
         "@babel/core": "^7.12.16",
         "@babel/plugin-proposal-class-properties": "^7.12.13",
         "@babel/preset-env": "^7.12.16",
