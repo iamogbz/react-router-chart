@@ -1,5 +1,9 @@
 name: Build
-on: [push]
+on:
+  push:
+    branches:
+      - master
+  pull_request_target:
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -15,6 +19,10 @@ jobs:
     - name: Lint
       run: npm run lint
     - name: Test
+      if: github.actor == 'dependabot[bot]' || github.actor == 'dependabot-preview[bot]'
+      run: npm run test
+    - name: Coverage
+      if: github.actor != 'dependabot[bot]' && github.actor != 'dependabot-preview[bot]'
       env:
         CI: true
         COVERALLS_GIT_BRANCH: ${{ github.ref }}
