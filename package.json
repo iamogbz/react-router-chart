@@ -102,7 +102,7 @@
         "@commitlint/travis-cli": "^12.1.1",
         "@testing-library/react": "^11.2.6",
         "@types/jest": "^26.0.22",
-        "@types/node": "^14.14.39",
+        "@types/node": "^14.14.41",
         "@types/react": "^17.0.3",
         "@types/react-router": "^5.1.13",
         "@types/react-router-dom": "^5.1.7",
