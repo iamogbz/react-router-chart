@@ -103,7 +103,7 @@
         "@testing-library/react": "^11.2.6",
         "@types/jest": "^26.0.23",
         "@types/node": "^15.0.2",
-        "@types/react": "^17.0.4",
+        "@types/react": "^17.0.5",
         "@types/react-router": "^5.1.14",
         "@types/react-router-dom": "^5.1.7",
         "@types/webpack": "^5.28.0",
