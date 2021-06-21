@@ -63,6 +63,7 @@
     },
     "jest": {
         "preset": "ts-jest",
+        "testEnvironment": "jsdom",
         "moduleDirectories": [
             "./src",
             "./tests",
