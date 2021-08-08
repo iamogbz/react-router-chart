@@ -29,7 +29,6 @@
     ],
     "scripts": {
         "commit": "git-cz",
-        "commitlint": "commitlint-travis",
         "lint": "eslint ./src/**",
         "test": "jest",
         "test-watch": "jest --watch",
@@ -93,7 +92,6 @@
         "@babel/runtime": "^7.14.8",
         "@commitlint/cli": "^13.1.0",
         "@commitlint/config-conventional": "^13.1.0",
-        "@commitlint/travis-cli": "^12.1.4",
         "@testing-library/react": "^12.0.0",
         "@types/jest": "^26.0.24",
         "@types/node": "^16.4.13",
