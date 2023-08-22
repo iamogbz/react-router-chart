@@ -18,20 +18,21 @@ jobs:
       uses: pnpm/action-setup@v2.2.1
       with:
         version: 8
+        run_install: true
     - name: Lint
-      run: npm run lint
+      run: pnpm run lint
     - name: Test
-      run: npm run test -- --coverage
+      run: pnpm run test -- --coverage
     - name: Report
       uses: coverallsapp/github-action@v1.0
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         path-to-lcov: ./artifacts/coverage/lcov.info
     - name: Build
-      run: npm run build
+      run: pnpm run build
     - name: Deploy
       if: github.ref == 'refs/heads/main' && github.actor != 'dependabot[bot]' && github.actor != 'dependabot-preview[bot]'
       env:
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      run: npm run release
+      run: pnpm run release
