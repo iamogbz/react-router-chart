@@ -4,7 +4,7 @@ Define your routes only once and reference for use everywhere.
 
 [![NPM Version](https://img.shields.io/npm/v/react-router-chart.svg)](https://www.npmjs.com/package/react-router-chart)
 [![Build Status](https://github.com/iamogbz/react-router-chart/workflows/Build/badge.svg)](https://github.com/iamogbz/react-router-chart/actions?query=workflow%3ABuild)
-[![Coverage Status](https://coveralls.io/repos/github/iamogbz/react-router-chart/badge.svg?branch=master&cache=0)](https://coveralls.io/github/iamogbz/react-router-chart?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/iamogbz/react-router-chart/badge.svg?branch=main&cache=0)](https://coveralls.io/github/iamogbz/react-router-chart?branch=main)
 [![Dependabot badge](https://badgen.net/github/dependabot/iamogbz/react-router-chart/?icon=dependabot)](https://app.dependabot.com)
 [![Dependencies](https://img.shields.io/librariesio/github/iamogbz/react-router-chart)](https://libraries.io/github/iamogbz/react-router-chart)
 [![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/iamogbz/react-router-chart)
