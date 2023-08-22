@@ -29,7 +29,7 @@
     ],
     "scripts": {
         "commit": "git-cz",
-        "lint": "eslint ./src/**",
+        "lint": "eslint --ignore-path .gitignore --ext .js,.ts,.jsx,.tsx .",
         "test": "jest",
         "test-watch": "jest --watch",
         "build": "webpack --mode=production",
@@ -71,6 +71,9 @@
         "testPathIgnorePatterns": [
             "./artifacts/",
             "./node_modules/"
+        ],
+        "coveragePathIgnorePatterns": [
+            ".mock.tsx?"
         ],
         "setupFilesAfterEnv": [
             "./config/setupTests.ts"

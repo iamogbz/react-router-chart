@@ -11,8 +11,6 @@ export type NamedRoute = {
 const DELIMITER_URL_PATH = "/";
 
 export class Chart {
-    static INDEX = $$;
-    static NAME = $;
     static ROOT = DELIMITER_URL_PATH;
 
     /**

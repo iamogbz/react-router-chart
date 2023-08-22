@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`index exports expected values 1`] = `
+{
+  "$": Symbol($),
+  "$$": Symbol($$),
+  "Chart": [Function],
+}
+`;
