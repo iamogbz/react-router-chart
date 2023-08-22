@@ -78,9 +78,7 @@
         "coverageDirectory": "./artifacts/coverage"
     },
     "peerDependencies": {
-        "history": ">=4.0.0",
-        "react": ">=16.0.0",
-        "react-router": ">=4.0.0"
+        "react-router-dom": ">=6.0.0"
     },
     "devDependencies": {
         "@babel/cli": "^7.22.10",
@@ -96,8 +94,6 @@
         "@types/jest": "^29.5.4",
         "@types/node": "^20.5.3",
         "@types/react": "^18.2.21",
-        "@types/react-router": "^5.1.20",
-        "@types/react-router-dom": "^5.3.3",
         "@types/webpack": "^5.28.2",
         "@types/webpack-node-externals": "^3.0.0",
         "@typescript-eslint/eslint-plugin": "^6.4.1",
