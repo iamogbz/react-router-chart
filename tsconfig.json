@@ -8,7 +8,7 @@
         "noFallthroughCasesInSwitch": true,
         "noImplicitAny": true,
         "noImplicitReturns": true,
-        "outDir": "./built",
+        "outDir": "./lib",
         "target": "es6"
     },
     "exclude": [

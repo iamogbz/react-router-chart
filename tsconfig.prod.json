@@ -1,0 +1,12 @@
+{
+    "extends": "./tsconfig.json",
+    "exclude": [
+        "**/*.mock.ts",
+        "**/*.mock.tsx",
+        "**/*.test.ts",
+        "**/*.test.tsx",
+    ],
+    "include": [
+        "src",
+    ]
+}

@@ -4,7 +4,8 @@
     "description": "Static route mapping for React Router",
     "author": "iamogbz",
     "license": "Unlicense",
-    "main": "lib/main.js",
+    "main": "lib/index.js",
+    "types": "lib/index.d.ts",
     "files": [
         "lib"
     ],
@@ -32,11 +33,25 @@
         "lint": "eslint --ignore-path .gitignore --ext .js,.ts,.jsx,.tsx .",
         "test": "jest",
         "test-watch": "jest --watch",
-        "build": "webpack --mode=production",
+        "build": "rm -rf lib && tsc --project tsconfig.prod.json --emitDeclarationOnly --declaration && webpack --mode=production",
         "build-watch": "webpack --mode=development --watch",
         "release": "semantic-release"
     },
     "release": {
+        "branches": [
+            "+([0-9])?(.{+([0-9]),x}).x",
+            "main",
+            "next",
+            "next-major",
+            {
+                "name": "beta",
+                "prerelease": true
+            },
+            {
+                "name": "alpha",
+                "prerelease": true
+            }
+        ],
         "plugins": [
             "@semantic-release/commit-analyzer",
             "@semantic-release/release-notes-generator",

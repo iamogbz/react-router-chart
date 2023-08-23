@@ -5,7 +5,7 @@ module.exports = {
     mode: "production",
     entry: "./src",
     output: {
-        filename: "main.js",
+        filename: "index.js",
         path: path.resolve(__dirname, "lib"),
         libraryTarget: "commonjs-module",
     },
