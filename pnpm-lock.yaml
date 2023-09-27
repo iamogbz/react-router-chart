@@ -45,8 +45,8 @@ devDependencies:
     specifier: ^18.2.22
     version: 18.2.22
   '@types/webpack':
-    specifier: ^5.28.2
-    version: 5.28.2(webpack-cli@5.1.4)
+    specifier: ^5.28.3
+    version: 5.28.3(webpack-cli@5.1.4)
   '@types/webpack-node-externals':
     specifier: ^3.0.1
     version: 3.0.1(webpack-cli@5.1.4)
@@ -2583,8 +2583,8 @@ packages:
       - webpack-cli
     dev: true
 
-  /@types/webpack@5.28.2(webpack-cli@5.1.4):
-    resolution: {integrity: sha512-7tcxyrIOd7WGimZIcWU6pDsNh2edGGnwYExOvd3l/nMvuxqwVPrFXnnTbYCnplqV9BJoU7Mo2mfFtiH8CNFvYw==}
+  /@types/webpack@5.28.3(webpack-cli@5.1.4):
+    resolution: {integrity: sha512-Hd0GBzpP0mO2ZKChw2V7flK45m01/2g9FalpMum2X66uouzG3P1vkxvOtLVzAWLna4N9h0s2sVjND9Slnlef8A==}
     dependencies:
       '@types/node': 20.7.0
       tapable: 2.2.1
