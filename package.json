@@ -111,7 +111,7 @@
         "@testing-library/react": "^14.0.0",
         "@types/jest": "^29.5.5",
         "@types/node": "^20.8.2",
-        "@types/react": "^18.2.24",
+        "@types/react": "^18.2.25",
         "@types/webpack": "^5.28.3",
         "@types/webpack-node-externals": "^3.0.2",
         "@typescript-eslint/eslint-plugin": "^6.7.4",
