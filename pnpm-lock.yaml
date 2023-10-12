@@ -21,8 +21,8 @@ devDependencies:
     specifier: ^7.22.15
     version: 7.22.15(@babel/core@7.23.2)
   '@babel/preset-typescript':
-    specifier: ^7.23.0
-    version: 7.23.0(@babel/core@7.23.2)
+    specifier: ^7.23.2
+    version: 7.23.2(@babel/core@7.23.2)
   '@babel/runtime':
     specifier: ^7.23.2
     version: 7.23.2
@@ -1470,8 +1470,8 @@ packages:
       '@babel/plugin-transform-react-pure-annotations': 7.22.5(@babel/core@7.23.2)
     dev: true
 
-  /@babel/preset-typescript@7.23.0(@babel/core@7.23.2):
-    resolution: {integrity: sha512-6P6VVa/NM/VlAYj5s2Aq/gdVg8FSENCg3wlZ6Qau9AcPaoF5LbN1nyGlR9DTRIw9PpxI94e+ReydsJHcjwAweg==}
+  /@babel/preset-typescript@7.23.2(@babel/core@7.23.2):
+    resolution: {integrity: sha512-u4UJc1XsS1GhIGteM8rnGiIvf9rJpiVgMEeCnwlLA7WJPC+jcXWJAGxYmeqs5hOZD8BbAfnV5ezBOxQbb4OUxA==}
     engines: {node: '>=6.9.0'}
     peerDependencies:
       '@babel/core': ^7.0.0-0
