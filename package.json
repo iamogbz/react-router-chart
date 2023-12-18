@@ -110,7 +110,7 @@
         "@commitlint/config-conventional": "^18.4.3",
         "@testing-library/react": "^14.1.2",
         "@types/jest": "^29.5.11",
-        "@types/node": "^20.10.4",
+        "@types/node": "^20.10.5",
         "@types/react": "^18.2.45",
         "@types/webpack": "^5.28.5",
         "@types/webpack-node-externals": "^3.0.4",
