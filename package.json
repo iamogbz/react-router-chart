@@ -106,7 +106,7 @@
         "@babel/preset-react": "^7.24.1",
         "@babel/preset-typescript": "^7.24.1",
         "@babel/runtime": "^7.24.4",
-        "@commitlint/cli": "^19.2.2",
+        "@commitlint/cli": "^19.3.0",
         "@commitlint/config-conventional": "^19.2.2",
         "@testing-library/react": "^15.0.2",
         "@types/jest": "^29.5.12",
