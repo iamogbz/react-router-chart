@@ -117,8 +117,8 @@ devDependencies:
     specifier: ^18.2.0
     version: 18.2.0(react@18.2.0)
   react-router:
-    specifier: ^6.22.3
-    version: 6.22.3(react@18.2.0)
+    specifier: ^6.23.0
+    version: 6.23.0(react@18.2.0)
   react-router-dom:
     specifier: ^6.23.0
     version: 6.23.0(react-dom@18.2.0)(react@18.2.0)
@@ -2295,11 +2295,6 @@ packages:
       '@pnpm/config.env-replace': 1.1.0
       '@pnpm/network.ca-file': 1.0.2
       config-chain: 1.1.13
-    dev: true
-
-  /@remix-run/router@1.15.3:
-    resolution: {integrity: sha512-Oy8rmScVrVxWZVOpEF57ovlnhpZ8CCPlnIIumVcV9nFdiSIrus99+Lw78ekXyGvVDlIsFJbSfmSovJUhCWYV3w==}
-    engines: {node: '>=14.0.0'}
     dev: true
 
   /@remix-run/router@1.16.0:
@@ -7658,16 +7653,6 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       react-router: 6.23.0(react@18.2.0)
-    dev: true
-
-  /react-router@6.22.3(react@18.2.0):
-    resolution: {integrity: sha512-dr2eb3Mj5zK2YISHK++foM9w4eBnO23eKnZEDs7c880P6oKbrjz/Svg9+nxqtHQK+oMW4OtjZca0RqPglXxguQ==}
-    engines: {node: '>=14.0.0'}
-    peerDependencies:
-      react: '>=16.8'
-    dependencies:
-      '@remix-run/router': 1.15.3
-      react: 18.2.0
     dev: true
 
   /react-router@6.23.0(react@18.2.0):
