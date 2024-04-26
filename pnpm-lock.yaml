@@ -34,7 +34,7 @@ devDependencies:
     version: 19.2.2
   '@testing-library/react':
     specifier: ^15.0.4
-    version: 15.0.4(react-dom@18.2.0)(react@18.2.0)
+    version: 15.0.4(react-dom@18.2.0)(react@18.3.0)
   '@types/jest':
     specifier: ^29.5.12
     version: 29.5.12
@@ -42,8 +42,8 @@ devDependencies:
     specifier: ^20.12.7
     version: 20.12.7
   '@types/react':
-    specifier: ^18.2.79
-    version: 18.2.79
+    specifier: ^18.3.0
+    version: 18.3.0
   '@types/webpack':
     specifier: ^5.28.5
     version: 5.28.5(webpack-cli@5.1.4)
@@ -111,17 +111,17 @@ devDependencies:
     specifier: ^3.0.2
     version: 3.0.2
   react:
-    specifier: ^18.2.0
-    version: 18.2.0
+    specifier: ^18.3.0
+    version: 18.3.0
   react-dom:
     specifier: ^18.2.0
-    version: 18.2.0(react@18.2.0)
+    version: 18.2.0(react@18.3.0)
   react-router:
     specifier: ^6.23.0
-    version: 6.23.0(react@18.2.0)
+    version: 6.23.0(react@18.3.0)
   react-router-dom:
     specifier: ^6.23.0
-    version: 6.23.0(react-dom@18.2.0)(react@18.2.0)
+    version: 6.23.0(react-dom@18.2.0)(react@18.3.0)
   rxjs:
     specifier: ^7.8.1
     version: 7.8.1
@@ -2435,7 +2435,7 @@ packages:
       pretty-format: 27.5.1
     dev: true
 
-  /@testing-library/react@15.0.4(react-dom@18.2.0)(react@18.2.0):
+  /@testing-library/react@15.0.4(react-dom@18.2.0)(react@18.3.0):
     resolution: {integrity: sha512-Fw/LM1emOHKfCxv5R0tz+25TOtiMt0o5Np1zJmb4LbSacOagXQX4ooAaHiJfGUMe+OjUk504BX11W+9Z8CvyZA==}
     engines: {node: '>=18'}
     peerDependencies:
@@ -2445,8 +2445,8 @@ packages:
       '@babel/runtime': 7.24.4
       '@testing-library/dom': 10.0.0
       '@types/react-dom': 18.2.7
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
+      react: 18.3.0
+      react-dom: 18.2.0(react@18.3.0)
     dev: true
 
   /@tootallnate/once@2.0.0:
@@ -2589,11 +2589,11 @@ packages:
   /@types/react-dom@18.2.7:
     resolution: {integrity: sha512-GRaAEriuT4zp9N4p1i8BDBYmEyfo+xQ3yHjJU4eiK5NDa1RmUZG+unZABUTK4/Ox/M+GaHwb6Ow8rUITrtjszA==}
     dependencies:
-      '@types/react': 18.2.79
+      '@types/react': 18.3.0
     dev: true
 
-  /@types/react@18.2.79:
-    resolution: {integrity: sha512-RwGAGXPl9kSXwdNTafkOEuFrTBD5SA2B3iEB96xi8+xu5ddUa/cpvyVCSNn+asgLCTHkb5ZxN8gbuibYJi4s1w==}
+  /@types/react@18.3.0:
+    resolution: {integrity: sha512-DiUcKjzE6soLyln8NNZmyhcQjVv+WsUIFSqetMN0p8927OztKT4VTfFTqsbAi5oAGIcgOmOajlfBqyptDDjZRw==}
     dependencies:
       '@types/prop-types': 15.7.5
       csstype: 3.1.2
@@ -7620,13 +7620,13 @@ packages:
       strip-json-comments: 2.0.1
     dev: true
 
-  /react-dom@18.2.0(react@18.2.0):
+  /react-dom@18.2.0(react@18.3.0):
     resolution: {integrity: sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==}
     peerDependencies:
       react: ^18.2.0
     dependencies:
       loose-envify: 1.4.0
-      react: 18.2.0
+      react: 18.3.0
       scheduler: 0.23.0
     dev: true
 
@@ -7642,7 +7642,7 @@ packages:
     resolution: {integrity: sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==}
     dev: true
 
-  /react-router-dom@6.23.0(react-dom@18.2.0)(react@18.2.0):
+  /react-router-dom@6.23.0(react-dom@18.2.0)(react@18.3.0):
     resolution: {integrity: sha512-Q9YaSYvubwgbal2c9DJKfx6hTNoBp3iJDsl+Duva/DwxoJH+OTXkxGpql4iUK2sla/8z4RpjAm6EWx1qUDuopQ==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -7650,23 +7650,23 @@ packages:
       react-dom: '>=16.8'
     dependencies:
       '@remix-run/router': 1.16.0
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      react-router: 6.23.0(react@18.2.0)
+      react: 18.3.0
+      react-dom: 18.2.0(react@18.3.0)
+      react-router: 6.23.0(react@18.3.0)
     dev: true
 
-  /react-router@6.23.0(react@18.2.0):
+  /react-router@6.23.0(react@18.3.0):
     resolution: {integrity: sha512-wPMZ8S2TuPadH0sF5irFGjkNLIcRvOSaEe7v+JER8508dyJumm6XZB1u5kztlX0RVq6AzRVndzqcUh6sFIauzA==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       react: '>=16.8'
     dependencies:
       '@remix-run/router': 1.16.0
-      react: 18.2.0
+      react: 18.3.0
     dev: true
 
-  /react@18.2.0:
-    resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}
+  /react@18.3.0:
+    resolution: {integrity: sha512-RPutkJftSAldDibyrjuku7q11d3oy6wKOyPe5K1HA/HwwrXcEqBdHsLypkC2FFYjP7bPUa6gbzSBhw4sY2JcDg==}
     engines: {node: '>=0.10.0'}
     dependencies:
       loose-envify: 1.4.0
