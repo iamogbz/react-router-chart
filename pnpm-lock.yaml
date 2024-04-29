@@ -34,7 +34,7 @@ devDependencies:
     version: 19.2.2
   '@testing-library/react':
     specifier: ^15.0.4
-    version: 15.0.4(react-dom@18.2.0)(react@18.3.0)
+    version: 15.0.4(react-dom@18.3.0)(react@18.3.0)
   '@types/jest':
     specifier: ^29.5.12
     version: 29.5.12
@@ -114,14 +114,14 @@ devDependencies:
     specifier: ^18.3.0
     version: 18.3.0
   react-dom:
-    specifier: ^18.2.0
-    version: 18.2.0(react@18.3.0)
+    specifier: ^18.3.0
+    version: 18.3.0(react@18.3.0)
   react-router:
     specifier: ^6.23.0
     version: 6.23.0(react@18.3.0)
   react-router-dom:
     specifier: ^6.23.0
-    version: 6.23.0(react-dom@18.2.0)(react@18.3.0)
+    version: 6.23.0(react-dom@18.3.0)(react@18.3.0)
   rxjs:
     specifier: ^7.8.1
     version: 7.8.1
@@ -2435,7 +2435,7 @@ packages:
       pretty-format: 27.5.1
     dev: true
 
-  /@testing-library/react@15.0.4(react-dom@18.2.0)(react@18.3.0):
+  /@testing-library/react@15.0.4(react-dom@18.3.0)(react@18.3.0):
     resolution: {integrity: sha512-Fw/LM1emOHKfCxv5R0tz+25TOtiMt0o5Np1zJmb4LbSacOagXQX4ooAaHiJfGUMe+OjUk504BX11W+9Z8CvyZA==}
     engines: {node: '>=18'}
     peerDependencies:
@@ -2446,7 +2446,7 @@ packages:
       '@testing-library/dom': 10.0.0
       '@types/react-dom': 18.2.7
       react: 18.3.0
-      react-dom: 18.2.0(react@18.3.0)
+      react-dom: 18.3.0(react@18.3.0)
     dev: true
 
   /@tootallnate/once@2.0.0:
@@ -7620,14 +7620,14 @@ packages:
       strip-json-comments: 2.0.1
     dev: true
 
-  /react-dom@18.2.0(react@18.3.0):
-    resolution: {integrity: sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==}
+  /react-dom@18.3.0(react@18.3.0):
+    resolution: {integrity: sha512-zaKdLBftQJnvb7FtDIpZtsAIb2MZU087RM8bRDZU8LVCCFYjPTsDZJNFUWPcVz3HFSN1n/caxi0ca4B/aaVQGQ==}
     peerDependencies:
-      react: ^18.2.0
+      react: ^18.3.0
     dependencies:
       loose-envify: 1.4.0
       react: 18.3.0
-      scheduler: 0.23.0
+      scheduler: 0.23.2
     dev: true
 
   /react-is@16.13.1:
@@ -7642,7 +7642,7 @@ packages:
     resolution: {integrity: sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==}
     dev: true
 
-  /react-router-dom@6.23.0(react-dom@18.2.0)(react@18.3.0):
+  /react-router-dom@6.23.0(react-dom@18.3.0)(react@18.3.0):
     resolution: {integrity: sha512-Q9YaSYvubwgbal2c9DJKfx6hTNoBp3iJDsl+Duva/DwxoJH+OTXkxGpql4iUK2sla/8z4RpjAm6EWx1qUDuopQ==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -7651,7 +7651,7 @@ packages:
     dependencies:
       '@remix-run/router': 1.16.0
       react: 18.3.0
-      react-dom: 18.2.0(react@18.3.0)
+      react-dom: 18.3.0(react@18.3.0)
       react-router: 6.23.0(react@18.3.0)
     dev: true
 
@@ -7968,8 +7968,8 @@ packages:
       xmlchars: 2.2.0
     dev: true
 
-  /scheduler@0.23.0:
-    resolution: {integrity: sha512-CtuThmgHNg7zIZWAXi3AsyIzA3n4xx7aNyjwC2VJldO2LMVDhFK+63xGqq6CsJH4rTAt6/M+N4GhZiDYPx9eUw==}
+  /scheduler@0.23.2:
+    resolution: {integrity: sha512-UOShsPwz7NrMUqhR6t0hWjFduvOzbtv7toDH1/hIrfRNIDBnnBWd0CwJTGvTpngVlmwGCdP9/Zl/tVrDqcuYzQ==}
     dependencies:
       loose-envify: 1.4.0
     dev: true
