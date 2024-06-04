@@ -33,8 +33,8 @@ devDependencies:
     specifier: ^19.2.2
     version: 19.2.2
   '@testing-library/react':
-    specifier: ^15.0.7
-    version: 15.0.7(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1)
+    specifier: ^16.0.0
+    version: 16.0.0(@testing-library/dom@10.0.0)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1)
   '@types/jest':
     specifier: ^29.5.12
     version: 29.5.12
@@ -2497,7 +2497,7 @@ packages:
     resolution: {integrity: sha512-PmJPnogldqoVFf+EwbHvbBJ98MmqASV8kLrBYgsDNxQcFMeIS7JFL48sfyXvuMtgmWO/wMhh25odr+8VhDmn4g==}
     engines: {node: '>=18'}
     dependencies:
-      '@babel/code-frame': 7.24.2
+      '@babel/code-frame': 7.24.6
       '@babel/runtime': 7.24.6
       '@types/aria-query': 5.0.1
       aria-query: 5.3.0
@@ -2507,21 +2507,24 @@ packages:
       pretty-format: 27.5.1
     dev: true
 
-  /@testing-library/react@15.0.7(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1):
-    resolution: {integrity: sha512-cg0RvEdD1TIhhkm1IeYMQxrzy0MtUNfa3minv4MjbgcYzJAZ7yD0i0lwoPOTPr+INtiXFezt2o8xMSnyHhEn2Q==}
+  /@testing-library/react@16.0.0(@testing-library/dom@10.0.0)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1):
+    resolution: {integrity: sha512-guuxUKRWQ+FgNX0h0NS0FIq3Q3uLtWVpBzcLOggmfMoUpgBnzBzvLLd4fbm6yS8ydJd94cIfY4yP9qUQjM2KwQ==}
     engines: {node: '>=18'}
     peerDependencies:
+      '@testing-library/dom': ^10.0.0
       '@types/react': ^18.0.0
+      '@types/react-dom': ^18.0.0
       react: ^18.0.0
       react-dom: ^18.0.0
     peerDependenciesMeta:
       '@types/react':
         optional: true
+      '@types/react-dom':
+        optional: true
     dependencies:
       '@babel/runtime': 7.24.6
       '@testing-library/dom': 10.0.0
       '@types/react': 18.3.3
-      '@types/react-dom': 18.2.7
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
     dev: true
@@ -2661,12 +2664,6 @@ packages:
 
   /@types/prop-types@15.7.5:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
-    dev: true
-
-  /@types/react-dom@18.2.7:
-    resolution: {integrity: sha512-GRaAEriuT4zp9N4p1i8BDBYmEyfo+xQ3yHjJU4eiK5NDa1RmUZG+unZABUTK4/Ox/M+GaHwb6Ow8rUITrtjszA==}
-    dependencies:
-      '@types/react': 18.3.3
     dev: true
 
   /@types/react@18.3.3:
